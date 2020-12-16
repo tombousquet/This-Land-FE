@@ -43,10 +43,12 @@ export default function PoiDetail () {
               <h2>
                 Comments section:
               </h2>
-              <p>From: {comment.user} </p>
-              <div>
-                {comment.image && <img src={comment.image} alt='memory' width='100' />}
-                <p>{comment.comment}</p>
+              <div className='comment'>
+                <p>From: {comment.user} </p>
+                <div>
+                  {comment.image && <img src={comment.image} alt='memory' width='100' />}
+                  <p>{comment.comment}</p>
+                </div>
               </div>
             </div>
           </div>
