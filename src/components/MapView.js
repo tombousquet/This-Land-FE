@@ -28,5 +28,12 @@ export default function MapView () {
     map.addControl(new mapboxgl.NavigationControl(), 'top-right')
     return () => map.remove()
   }, [])
-  return <div className='map-container' ref={mapContainerRef} />
+  return (
+    <div className='ma3'>
+      <div className='ma3'>
+        <h1 className='center title'>This Land</h1>
+      </div>
+      <div className='map-container center ma3' ref={mapContainerRef} />
+    </div>
+  )
 }
