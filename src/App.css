@@ -6,3 +6,7 @@
 .title {
   text-align: center;
 }
+
+.comment {
+  border: solid black 2px;
+}
