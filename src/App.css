@@ -10,3 +10,8 @@
 .comment {
   border: solid black 2px;
 }
+
+.mapAdd {
+  width: 400px;
+  height: 400px;
+}
