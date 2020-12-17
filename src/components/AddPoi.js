@@ -139,11 +139,11 @@ export default function AddPoi () {
                 <input
                   className='mh3'
                   required
-                  type='text'
-                  id='image'
+                  type='file'
+                  id='images'
                   value={images}
                   onChange={event => setImages(event.target.value)}
-                  placeholder='Add your images...'
+                  placeholder='Choose your image to add'
                 />
               </div>
               <div className='mh2 mv3'>
