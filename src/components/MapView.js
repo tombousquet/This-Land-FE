@@ -30,7 +30,7 @@ export default function MapView () {
   return (
     <div className='ma3'>
       <div className='ma3'>
-        <h1 className='center title'>This Land</h1>
+        <h1 className='center title'>Find your location!</h1>
       </div>
       <div className='map-container center ma3' ref={mapContainerRef} />
     </div>
