@@ -41,7 +41,7 @@ export default function PoiDetail () {
           >
             <div>
               <h2>
-                Comments section:
+                Memories section:
               </h2>
               <div className='comment'>
                 <p>From: {comment.user} </p>
