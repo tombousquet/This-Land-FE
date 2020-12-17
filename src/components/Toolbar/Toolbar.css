@@ -45,3 +45,9 @@
 .toolbar_navigation-items a:active {
   color: antiquewhite;
 }
+
+@media (max-width: 768px) {
+  .toolbar_navigation-items {
+    display: none;
+  }
+}

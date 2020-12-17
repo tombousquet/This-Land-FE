@@ -6,14 +6,20 @@ import 'tachyons'
 import Toolbar from './components/Toolbar/Toolbar'
 import SideDrawer from './components/SideDrawer/SideDrawer'
 import Backdrop from './components/Backdrop/Backdrop'
+import React, { useState } from 'react'
 
-function App () {
+function App (props) {
+  const { App } = props
+
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
+
   return (
     <Router>
       <div style={{ height: '100%' }}>
-        <Toolbar />
-        <SideDrawer />
-        <Backdrop />
+        <Toolbar
+          if drawerClickHandler={() => setSideDrawerOpen(!sideDrawerOpen)}
+        />
+        {sideDrawerOpen && <><SideDrawer /> <Backdrop /></>}
         <main style={{ marginTop: '80px' }} />
         <Switch>
           <Route path='/map'>
