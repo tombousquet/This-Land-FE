@@ -1,5 +1,7 @@
 import { useRef, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 export default function MapView () {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
@@ -12,18 +14,17 @@ export default function MapView () {
       style: 'mapbox://styles/tombousquet/ckinqejtv0v2617ms4kflvkp8',
       // centered on durham
       center: [-78.8986, 35.9940],
-      zoom: 13
+      zoom: 10
     })
-    // floating marker
-    const marker = new mapboxgl.Marker({
-      color: '#999999',
-      anchor: 'bottom',
-      draggable: true
-    }).setLngLat([-78.9035, 35.992])
-      .addTo(map)
-      // track longitude and latitude
-    const lngLat = marker.getLngLat()
-    console.log('Long: ' + lngLat.lng + ', Lat: ' + lngLat.lat)
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      })
+    )
+
     // zoom buttons
     map.addControl(new mapboxgl.NavigationControl(), 'top-right')
     return () => map.remove()
