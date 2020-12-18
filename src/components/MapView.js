@@ -6,7 +6,6 @@ export default function MapView () {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
   const mapContainerRef = useRef(null)
-
   const [pois, setPois] = useState([])
 
   useEffect(() => {
@@ -23,11 +22,6 @@ export default function MapView () {
       zoom: 10
     })
 
-    // const marker = new mapboxgl.Marker({
-    //   color: '#FFFFFF'
-    // }).setLngLat(pois.geometry.coordinates)
-    //   .addTo(map)
-
     // locate user
     map.addControl(
       new mapboxgl.GeolocateControl({
@@ -40,8 +34,18 @@ export default function MapView () {
 
     // zoom buttons
     map.addControl(new mapboxgl.NavigationControl(), 'top-right')
+
+    console.log(pois)
+    const currentMarker = pois[0]
+    console.log(currentMarker.center)
+
+    const marker = new mapboxgl.Marker({
+      color: '#FFFFFF'
+    }).setLngLat(currentMarker.center)
+      .addTo(map)
+
     return () => map.remove()
-  }, [])
+  })
 
   return (
     <div className='ma3'>
