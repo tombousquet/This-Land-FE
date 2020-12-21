@@ -7,14 +7,13 @@ export default function MapView () {
 
   const mapContainerRef = useRef(null)
   const [pois, setPois] = useState([])
+  const [newMarker, setNewMarker] = useState([])
+
+  let map
 
   useEffect(() => {
-    axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/409%20Blackwell%20St,%20Durham,%20NC%2027701.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
-      .then(response => {
-        setPois(response.data.features)
-      }, [])
-
-    const map = new mapboxgl.Map({
+    console.log('map container ref', mapContainerRef.current)
+    map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/tombousquet/ckinqejtv0v2617ms4kflvkp8',
       // centered on durham
@@ -35,17 +34,25 @@ export default function MapView () {
     // zoom buttons
     map.addControl(new mapboxgl.NavigationControl(), 'top-right')
 
-    console.log(pois)
-    const currentMarker = pois[0]
-    console.log(currentMarker.center)
-
-    const marker = new mapboxgl.Marker({
-      color: '#FFFFFF'
-    }).setLngLat(currentMarker.center)
-      .addTo(map)
+    axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/409%20Blackwell%20St,%20Durham,%20NC%2027701.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
+      .then(response => {
+        setPois(response.data.features)
+        setNewMarker(response.data.features[0])
+      }, [])
 
     return () => map.remove()
-  })
+  }, [])
+
+  useEffect(() => {
+    if (map && newMarker.center) {
+      console.log('location coordinates', newMarker.center)
+
+      const marker = new mapboxgl.Marker({
+        color: '#FFFFFF'
+      }).setLngLat(newMarker.center)
+        .addTo(map)
+    }
+  }, [newMarker, map])
 
   return (
     <div className='ma3'>
