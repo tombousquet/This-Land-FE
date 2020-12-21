@@ -6,14 +6,13 @@ export default function MapView () {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
   const mapContainerRef = useRef(null)
+  const mapRef = useRef(null)
   const [pois, setPois] = useState([])
   const [newMarker, setNewMarker] = useState([])
 
-  let map
-
   useEffect(() => {
     console.log('map container ref', mapContainerRef.current)
-    map = new mapboxgl.Map({
+    const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/tombousquet/ckinqejtv0v2617ms4kflvkp8',
       // centered on durham
@@ -34,6 +33,8 @@ export default function MapView () {
     // zoom buttons
     map.addControl(new mapboxgl.NavigationControl(), 'top-right')
 
+    mapRef.current = map
+
     axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/409%20Blackwell%20St,%20Durham,%20NC%2027701.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
       .then(response => {
         setPois(response.data.features)
@@ -44,15 +45,15 @@ export default function MapView () {
   }, [])
 
   useEffect(() => {
-    if (map && newMarker.center) {
+    if (newMarker.center && mapRef.current) {
       console.log('location coordinates', newMarker.center)
 
       const marker = new mapboxgl.Marker({
         color: '#FFFFFF'
       }).setLngLat(newMarker.center)
-        .addTo(map)
+        .addTo(mapRef.current)
     }
-  }, [newMarker, map])
+  }, [newMarker, mapRef])
 
   return (
     <div className='ma3'>
