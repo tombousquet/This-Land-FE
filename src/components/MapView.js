@@ -40,7 +40,8 @@ export default function MapView () {
 
     axios.get('http://this-land-team-5.herokuapp.com/api/pointsofinterest/')
       .then(response => {
-        setPois(response.data[3])
+        setPois(response.data[1])
+        console.log(response.data[1])
       }, [setPois, mapRef, map, mapContainerRef])
 
     return () => map.remove()
