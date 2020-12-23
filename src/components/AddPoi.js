@@ -16,7 +16,7 @@ export default function AddPoi () {
   const [state, setState] = useState('')
   const [zipCode, setZipCode] = useState('')
   const [notes, setNotes] = useState('')
-  const [images, setImages] = useState('')
+  const [images, setImages] = useState(null)
   const [category, setCategory] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
 
@@ -51,16 +51,22 @@ export default function AddPoi () {
 
   function handleSubmit (event) {
     event.preventDefault()
-    axios.post('http://this-land-team-5.herokuapp.com/api/pointsofinterest/', {
-      locationName: locationName,
-      streetAddress: streetAddress,
+    const data = {
+      location_name: locationName,
+      street_address: streetAddress,
       city: city,
       state: state,
       notes: notes,
-      zipCode: zipCode,
-      images: images,
+      zip_code: zipCode,
       category: category
-    }, {})
+    }
+    if (images) { data.images = images }
+
+    axios.post('http://this-land-team-5.herokuapp.com/api/pointsofinterest/', data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
       .then(response => {
         setFeedbackMsg({ type: 'success', message: 'Point of Interest was successfully added!' })
         console.log(response)
