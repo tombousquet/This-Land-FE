@@ -1,15 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 export default function PoiDetail () {
-  const [poi, setPoi] = useState([
-    {
-      location_name: 'White Furniture Company Warehouse',
-      address: '201 E Center St Mebane NC 27302',
-      image: 'https://media.bizj.us/view/img/5805181/whitefurnitureapt-mebane*1200xx498-280-0-20.jpg',
-      notes: 'The White brothers started the company in 1881, the year the town of Mebane incorporated.',
-      category: 'Business'
-    }
-  ])
+  const { id } = useParams()
+  const [poi, setPoi] = useState({})
   const [comment, setComment] = useState([
     {
       user: 'tombousquet',
@@ -18,22 +13,27 @@ export default function PoiDetail () {
 
     }]
   )
+
+  useEffect(() => {
+    axios.get('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
+      .then(response => {
+        setPoi(response.data)
+        console.log(response.data)
+      })
+  }, [id])
+
   return (
     <div className='ma2'>
-      {poi.map(poi => (
-        <div
-          key={poi.id}
-        >
-          <h1>POI Detail</h1>
-          <h2> {poi.location_name} </h2>
-          <h3> {poi.address} </h3>
-          <div>
-            {poi.image && <img src={poi.image} alt='location' width='150' />}
-            <p>Notes: {poi.notes}</p>
-          </div>
-          <h3> Category: {poi.category} </h3>
-        </div>
-      ))}
+
+      <h1>POI Detail</h1>
+      <h2> {poi.location_name} </h2>
+      <h4> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </h4>
+      <div>
+        {poi.images && <img src={poi.images} alt='location' width='150' />}
+        <p>Notes: {poi.notes}</p>
+      </div>
+      <h3> Category: {poi.category} </h3>
+
       <div>
         {comment.map(comment => (
           <div

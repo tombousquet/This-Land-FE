@@ -9,10 +9,6 @@ export default function MapView () {
   const mapRef = useRef(null)
   const [pois, setPois] = useState([])
   const [newMarker, setNewMarker] = useState([])
-  let streetAddress
-  let city
-  let state
-  let zip
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -40,28 +36,29 @@ export default function MapView () {
 
     axios.get('http://this-land-team-5.herokuapp.com/api/pointsofinterest/')
       .then(response => {
-        setPois(response.data[1])
-        console.log(response.data[1])
-      }, [setPois, mapRef, map, mapContainerRef])
+        setPois(response.data)
+        console.log('pois:', response.data)
+      })
 
     return () => map.remove()
   }, [])
 
-  useEffect((setPois) => {
-    console.log(pois)
-    const streetAddress = pois.street_address
-    const city = pois.city
-    const state = pois.state
-    const zip = pois.zip_code
-    const fullAddress = (streetAddress + city + state + zip)
-    console.log(fullAddress)
+  useEffect(() => {
+    for (const poi of pois) {
+      const streetAddress = poi.street_address
+      const city = poi.city
+      const state = poi.state
+      const zip = poi.zip_code
+      const fullAddress = (streetAddress + city + state + zip)
+      console.log(fullAddress)
 
-    axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + streetAddress + '%20' + city + '%20' + state + '%20' + zip + '.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
-      .then(response => {
-        setNewMarker(response.data.features[0])
-        console.log(response.data.features[0])
-      }, [])
-  }, [setPois, pois, streetAddress, city, state, zip])
+      axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + streetAddress + '%20' + city + '%20' + state + '%20' + zip + '.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
+        .then(response => {
+          setNewMarker(response.data.features[0])
+          console.log(response.data.features[0])
+        }, [])
+    }
+  }, [pois])
 
   useEffect(() => {
     if (newMarker.center && mapRef.current) {
