@@ -32,3 +32,9 @@
 .side-drawer a:active {
   color: rgb(240, 230, 140);
 }
+
+@media (max-width: 769 px) {
+  .toolbar_navigation-items {
+    display: none;
+  }
+}

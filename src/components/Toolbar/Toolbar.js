@@ -5,7 +5,7 @@ import './Toolbar.css'
 const toolbar = props => (
   <header className='toolbar'>
     <nav className='toolbar_navigation'>
-      <div>
+      <div className='toolbar_toggle-button'>
         <DrawerToggleButton onClick={props.drawerClickHandler} />
       </div>
       <div className='toolbar_logo'><a href='/'>THIS LAND</a></div>
@@ -13,8 +13,9 @@ const toolbar = props => (
       <div className='toolbar_navigation-items'>
         <ul>
           <li><a href='/map'>Home</a></li>
-          <li><a href='/location'>Add a Point of Interest</a></li>
-          <li><a href='/map'>Login/Sign Up</a></li>
+          <li><a href='/add'>Add a Point of Interest</a></li>
+          <li><a href='/'>Sign In/Log In</a></li>
+          <li><a href='/add'>Log Out</a></li>
         </ul>
       </div>
     </nav>
