@@ -11,9 +11,12 @@ export default function AddPoi () {
 
   const mapContainerRef = useRef(null)
   const [locationName, setLocationName] = useState('')
-  const [address, setAddress] = useState('')
+  const [streetAddress, setStreetAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [state, setState] = useState('')
+  const [zipCode, setZipCode] = useState('')
   const [notes, setNotes] = useState('')
-  const [images, setImages] = useState('')
+  const [images, setImages] = useState(null)
   const [category, setCategory] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
 
@@ -48,13 +51,22 @@ export default function AddPoi () {
 
   function handleSubmit (event) {
     event.preventDefault()
-    axios.post('----------------', {
-      locationName: locationName,
-      address: address,
+    const data = {
+      location_name: locationName,
+      street_address: streetAddress,
+      city: city,
+      state: state,
       notes: notes,
-      images: images,
+      zip_code: zipCode,
       category: category
-    }, {})
+    }
+    if (images) { data.images = images }
+
+    axios.post('http://this-land-team-5.herokuapp.com/api/pointsofinterest/', data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
       .then(response => {
         setFeedbackMsg({ type: 'success', message: 'Point of Interest was successfully added!' })
         console.log(response)
@@ -111,15 +123,51 @@ export default function AddPoi () {
                 />
               </div>
               <div className='mh2 mv3'>
-                <label className='mv2 b mh2' htmlFor='authors'>Address</label>
+                <label className='mv2 b mh2' htmlFor='street address'>Street Address</label>
                 <input
                   className='mh1'
                   required
                   type='text'
-                  id='address'
-                  value={address}
-                  onChange={event => setAddress(event.target.value)}
-                  placeholder='Address'
+                  id='streetAddress'
+                  value={streetAddress}
+                  onChange={event => setStreetAddress(event.target.value)}
+                  placeholder='Street Address'
+                />
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='city'>City</label>
+                <input
+                  className='mh1'
+                  required
+                  type='text'
+                  id='city'
+                  value={city}
+                  onChange={event => setCity(event.target.value)}
+                  placeholder='City'
+                />
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='state'>State</label>
+                <input
+                  className='mh1'
+                  required
+                  type='text'
+                  id='state'
+                  value={state}
+                  onChange={event => setState(event.target.value)}
+                  placeholder='State'
+                />
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='zipCode'>Zip Code</label>
+                <input
+                  className='mh1'
+                  required
+                  type='text'
+                  id='zipCode'
+                  value={zipCode}
+                  onChange={event => setZipCode(event.target.value)}
+                  placeholder='zipCode'
                 />
               </div>
               <div className='mh2 mv3'>
@@ -138,7 +186,6 @@ export default function AddPoi () {
                 <label className='mv2 b mh2' htmlFor='status'>Image</label>
                 <input
                   className='mh3'
-                  required
                   type='file'
                   id='images'
                   value={images}
