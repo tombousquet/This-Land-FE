@@ -26,7 +26,7 @@ function App (props) {
           <Route path='/map'>
             <MapView />
           </Route>
-          <Route path='/detail'>
+          <Route path='/detail/:id'>
             <PoiDetail />
           </Route>
           <Route path='/add'>
