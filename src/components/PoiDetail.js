@@ -1,18 +1,12 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export default function PoiDetail () {
   const { id } = useParams()
   const [poi, setPoi] = useState({})
-  const [comment, setComment] = useState([
-    {
-      user: 'tombousquet',
-      comment: 'My family still has an old rocking chair from White Furniture!',
-      image: 'https://render.fineartamerica.com/images/rendered/default/metal-print/6.5/10/break/images-medium-5/old-wooden-rocking-chair-edward-fielding.jpg'
-
-    }]
-  )
+  const [comment, setComment] = useState({})
+  const [addComment, setAddComment] = useState(false)
 
   useEffect(() => {
     axios.get('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
@@ -22,37 +16,52 @@ export default function PoiDetail () {
       })
   }, [id])
 
-  return (
-    <div className='ma2'>
+  // useEffect(() => {
+  //   axios.get('http://this-land-team-5.herokuapp.com/api/tellyourstory/' + id)
+  //     .then(response => {
+  //       setComment(response.data)
+  //       console.log(response.data)
+  //     })
+  // }, [id])
 
-      <h1>POI Detail</h1>
+  function newComment () {
+    setAddComment(true)
+  }
+
+  console.log(poi)
+
+  const comments = poi.TellYourStories
+
+  if (addComment) {
+    return <Redirect to={'/comment/' + id + '/add'} />
+  }
+
+  return (
+    <div>
+      <h1 className='mh2 mv4'>YOUR POINT OF INTEREST </h1>
       <h2> {poi.location_name} </h2>
       <h4> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </h4>
       <div>
         {poi.images && <img src={poi.images} alt='location' width='150' />}
         <p>Notes: {poi.notes}</p>
       </div>
-      <h3> Category: {poi.category} </h3>
-
-      <div>
-        {comment.map(comment => (
-          <div
-            key={comment.id}
-          >
-            <div>
-              <h2>
-                Memories section:
-              </h2>
-              <div className='comment'>
-                <p>From: {comment.user} </p>
-                <div>
-                  {comment.image && <img src={comment.image} alt='memory' width='100' />}
-                  <p>{comment.comment}</p>
-                </div>
-              </div>
+      <h4> Category: {poi.category} </h4>
+      <div className='note mh2 mv4'>
+        <h2 className='mh3'>Other Peoples Memories about this Place</h2>
+        <div>
+          {comments && comments.map((comments, index) => (
+            <div key={index}>
+              <ul>
+                <li>
+                  <h3 className='ma2'>{comments.text}</h3>
+                </li>
+              </ul>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+      <div className='mh1'>
+        <button className='mh2' onClick={newComment}>Add your own memory or story to this place!</button>
       </div>
     </div>
   )
