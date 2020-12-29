@@ -11,11 +11,23 @@ export default function AddComment () {
 
   function handleSubmit (e) {
     e.preventDefault()
-    axios.post('http://this-land-team-5.herokuapp.com/api/tellyourstory/', {
-      comment: comment,
-      image: image,
-      id: id
-    })
+
+    const data = new FormData()
+    data.set('text', comment)
+    data.set('poi', id)
+    const image = document.getElementById('images').files[0]
+    if (image) {
+      data.set('images', image)
+    }
+
+    axios.post('http://this-land-team-5.herokuapp.com/api/tellyourstory/',
+      data,
+      {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+    )
       .then(response => {
         setFeedbackMsg({ type: 'success', message: 'This comment was added successfully.' })
         console.log(response)

@@ -16,14 +16,6 @@ export default function PoiDetail () {
       })
   }, [id])
 
-  // useEffect(() => {
-  //   axios.get('http://this-land-team-5.herokuapp.com/api/tellyourstory/' + id)
-  //     .then(response => {
-  //       setComment(response.data)
-  //       console.log(response.data)
-  //     })
-  // }, [id])
-
   function newComment () {
     setAddComment(true)
   }
@@ -54,6 +46,7 @@ export default function PoiDetail () {
               <ul>
                 <li>
                   <h3 className='ma2'>{comments.text}</h3>
+                  {comments.images && <img src={comments.images} alt='location' width='150' />}
                 </li>
               </ul>
             </div>
