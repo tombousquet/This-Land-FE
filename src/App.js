@@ -1,6 +1,7 @@
 import MapView from './components/MapView'
 import PoiDetail from './components/PoiDetail'
 import AddPoi from './components/AddPoi'
+import AddComment from './components/AddComment'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css'
 import 'tachyons'
@@ -26,6 +27,9 @@ function App (props) {
           </Route>
           <Route path='/detail/:id'>
             <PoiDetail />
+          </Route>
+          <Route path='/comment/:id/add'>
+            <AddComment />
           </Route>
           <Route path='/add'>
             <AddPoi />
