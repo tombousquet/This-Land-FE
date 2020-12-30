@@ -1,14 +1,14 @@
 import { useRef, useEffect, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 export default function MapView () {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
-
+  const { id } = useParams()
   const mapContainerRef = useRef(null)
   const mapRef = useRef(null)
   const [pois, setPois] = useState([])
-  const [newMarker, setNewMarker] = useState([])
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -52,31 +52,28 @@ export default function MapView () {
 
       axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + streetAddress + '%20' + city + '%20' + state + '%20' + zip + '.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
         .then(response => {
-          setNewMarker(response.data.features[0])
-          console.log(response.data.features[0])
+          addMarker(response.data.features[0], poi)
         }, [])
     }
   }, [pois])
 
-  useEffect(() => {
-    if (newMarker.center && mapRef.current) {
-      console.log('location coordinates', newMarker.center)
+  const addMarker = (location, poi, id) => {
+    if (location.center && mapRef.current) {
+      const locationName = poi.location_name
+      console.log({ poi })
 
-      for (const poi of pois) {
-        const locationName = poi.location_name
-        const html = locationName
-
-        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(html)
-        console.log(locationName)
-
-        const marker = new mapboxgl.Marker({
-          color: '#FFFFFF'
-        }).setLngLat(newMarker.center)
-          .setPopup(popup)
-          .addTo(mapRef.current)
-      }
+      const newPopup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+        `<div>
+        <h5'>${locationName}</h5>
+        <a href='/detail/${id}'>More detail</a>
+        </div>`)
+      const marker = new mapboxgl.Marker({
+        color: '#FFFFFF'
+      }).setLngLat(location.center)
+        .setPopup(newPopup)
+        .addTo(mapRef.current)
     }
-  }, [newMarker, mapRef, pois])
+  }
 
   return (
     <div className='ma3'>
