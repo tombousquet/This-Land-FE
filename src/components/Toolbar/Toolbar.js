@@ -14,7 +14,7 @@ const toolbar = props => (
         <ul>
           <li><a href='/map'>Home</a></li>
           <li><a href='/add'>Add a Point of Interest</a></li>
-          <li><a href='/map'>Login/Sign Up</a></li>
+          <li><a href='/login'>Login/Sign Up</a></li>
         </ul>
       </div>
     </nav>
