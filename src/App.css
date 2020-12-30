@@ -15,3 +15,45 @@
   width: 400px;
   height: 400px;
 }
+
+h1 {
+  text-align: center;
+}
+
+.POI {
+  display: grid;
+  width: 100%;
+  grid-template-areas:
+    "head head"
+    "nav main"
+    "nav2 foot";
+  grid-template-rows: auto-fill;
+  grid-template-columns: auto-fill;
+  margin: 2rem auto;
+  border: 4mm ridge rgba(128, 128, 0, 0.6);
+  background-color: rosybrown;
+}
+.header {
+  grid-area: head;
+  background-color: antiquewhite;
+  text-align: center;
+}
+.nav {
+  grid-area: nav;
+  background-color: rgba(128, 128, 0, 0.6);
+}
+.main {
+  grid-area: main;
+  background-color: rgb(255, 218, 185);
+  text-align: center;
+}
+.footer {
+  grid-area: foot;
+  background-color: rgb(189, 183, 107);
+}
+.comments {
+}
+
+body {
+  background-color: #5f9ea0;
+}

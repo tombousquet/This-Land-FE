@@ -5,7 +5,6 @@ import axios from 'axios'
 export default function PoiDetail () {
   const { id } = useParams()
   const [poi, setPoi] = useState({})
-  const [comment, setComment] = useState({})
   const [addComment, setAddComment] = useState(false)
 
   useEffect(() => {
@@ -31,16 +30,20 @@ export default function PoiDetail () {
   return (
     <div>
       <h1 className='mh2 mv4'>YOUR POINT OF INTEREST </h1>
-      <h2> {poi.location_name} </h2>
-      <h4> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </h4>
-      <div>
-        {poi.images && <img src={poi.images} alt='location' width='150' />}
-        <p>Notes: {poi.notes}</p>
+      <div className='POI'>
+        <h2 className='header'> {poi.location_name} </h2>
+        <h4 className='nav2'> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </h4>
+        <div className='main'>
+          {poi.images && <img src={poi.images} alt='location' width='500' />}
+        </div>
+        <div className='nav'>
+          <p> {poi.notes} </p>
+        </div>
+        <h5 className='footer'> Category: {poi.category} </h5>
       </div>
-      <h4> Category: {poi.category} </h4>
       <div className='note mh2 mv4'>
-        <h2 className='mh3'>Other Peoples Memories about this Place</h2>
-        <div>
+        <h1 className='mh3'>Other Peoples Memories about this Place</h1>
+        <div className='Comments'>
           {comments && comments.map((comments, index) => (
             <div key={index}>
               <ul>
