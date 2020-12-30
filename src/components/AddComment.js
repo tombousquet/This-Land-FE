@@ -6,7 +6,6 @@ import clsx from 'clsx'
 export default function AddComment () {
   const { id } = useParams()
   const [comment, setComment] = useState('')
-  const [image, setImage] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
 
   function handleSubmit (e) {
