@@ -6,10 +6,11 @@ import mapboxgl from 'mapbox-gl'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
-export default function AddPoi () {
+export default function AddPoi ({ auth }) {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
   const mapContainerRef = useRef(null)
+  const mapRef = useRef(null)
   const [locationName, setLocationName] = useState('')
   const [streetAddress, setStreetAddress] = useState('')
   const [city, setCity] = useState('')
@@ -45,6 +46,9 @@ export default function AddPoi () {
 
     // zoom buttons
     map.addControl(new mapboxgl.NavigationControl(), 'top-right')
+
+    mapRef.current = map
+
     return () => map.remove()
   }, [])
 

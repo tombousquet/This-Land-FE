@@ -1,11 +1,10 @@
 import { useRef, useEffect, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
 
 export default function MapView () {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
-  const { id } = useParams()
+
   const mapContainerRef = useRef(null)
   const mapRef = useRef(null)
   const [pois, setPois] = useState([])
@@ -57,15 +56,14 @@ export default function MapView () {
     }
   }, [pois])
 
-  const addMarker = (location, poi, id) => {
+  const addMarker = (location, poi) => {
     if (location.center && mapRef.current) {
       const locationName = poi.location_name
-      console.log({ poi })
 
       const newPopup = new mapboxgl.Popup({ offset: 25 }).setHTML(
         `<div>
         <h5'>${locationName}</h5>
-        <a href='/detail/${id}'>More detail</a>
+        <a href='/detail/${poi.id}'>More detail</a>
         </div>`)
       const marker = new mapboxgl.Marker({
         color: '#FFFFFF'
