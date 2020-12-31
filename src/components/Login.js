@@ -11,7 +11,7 @@ export default function Login ({ auth, onLogin }) {
   function handleSubmit (event) {
     event.preventDefault()
 
-    axios.get('https://books-api.glitch.me/api/users', {
+    axios.get('https://this-land-team-5.herokuapp.com/api/userpass/', {
       auth: {
         username: username,
         password: password
