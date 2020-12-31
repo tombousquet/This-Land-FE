@@ -20,6 +20,10 @@ h1 {
   text-align: center;
 }
 
+li {
+  color: white;
+}
+
 .POI {
   display: grid;
   width: 100%;

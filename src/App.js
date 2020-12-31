@@ -15,7 +15,7 @@ import Login from './components/Login'
 
 function App (props) {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
-  const [auth, setAuth] = useLocalStorage('book_auth', null)
+  const [auth, setAuth] = useLocalStorage('poi_auth', null)
 
   return (
     <Router>
@@ -25,11 +25,6 @@ function App (props) {
         />
         {sideDrawerOpen && <><SideDrawer /> <Backdrop /></>}
         <main style={{ marginTop: '80px' }} />
-        {auth && (
-          <div>
-            <span> {auth.username}</span> | <button onClick={() => setAuth(null)}>Log out</button>
-          </div>
-        )}
         <Switch>
           <Route path='/signup'>
             <Register
@@ -50,10 +45,10 @@ function App (props) {
             <PoiDetail />
           </Route>
           <Route path='/comment/:id/add'>
-            <AddComment />
+            <AddComment auth={auth} />
           </Route>
           <Route path='/add'>
-            <AddPoi />
+            <AddPoi auth={auth} />
           </Route>
         </Switch>
       </div>
