@@ -1,24 +1,34 @@
 import React from 'react'
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton'
 import './Toolbar.css'
+import { useLocalStorage } from '../../Hooks'
+import { Link } from 'react-router-dom'
 
-const toolbar = props => (
-  <header className='toolbar'>
-    <nav className='toolbar_navigation'>
-      <div className='toolbar_toggle-button'>
-        <DrawerToggleButton onClick={props.drawerClickHandler} />
-      </div>
-      <div className='toolbar_logo'><a href='/'>THIS LAND</a></div>
-      <div className='spacer' />
-      <div className='toolbar_navigation-items'>
-        <ul>
-          <li><a href='/map'>Home</a></li>
-          <li><a href='/add'>Add a Point of Interest</a></li>
-          <li><a href='/login'>Login/Sign Up</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-)
+export default function Toolbar (props) {
+  const [auth, setAuth] = useLocalStorage('poi_auth', null)
 
-export default toolbar
+  return (
+    <header className='toolbar'>
+      <nav className='toolbar_navigation'>
+        <div className='toolbar_toggle-button'>
+          <DrawerToggleButton onClick={props.drawerClickHandler} />
+        </div>
+        <div className='toolbar_logo'><a href='/map'>THIS LAND</a></div>
+        <div className='spacer' />
+        <div className='toolbar_navigation-items'>
+          <ul>
+            <li><a href='/map'>Home</a></li>
+            {auth && (
+              <li><a href='/add'>Add a Point of Interest</a></li>
+            )}
+            <div>
+              {auth
+                ? <li>Logged in as *(username)* | <Link to='/login' onClick={() => setAuth(null)}>Log out</Link></li>
+                : <li><a href='/login'>Log in to add</a></li>}
+            </div>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  )
+}
