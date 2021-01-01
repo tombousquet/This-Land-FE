@@ -11,7 +11,7 @@ export default function Register ({ auth, onRegister }) {
   function handleSubmit (event) {
     event.preventDefault()
 
-    axios.post('https://books-api.glitch.me/api/users', {
+    axios.post('https://this-land-team-5.herokuapp.com/api/userpass/', {
       username: username,
       password: password
     })
@@ -20,12 +20,13 @@ export default function Register ({ auth, onRegister }) {
         onRegister({ username, password })
       })
       .catch(error => {
-        setFeedbackMsg({ type: 'error', message: error.response.data.errors[0] })
+        setFeedbackMsg({ type: 'error', message: 'This user already exists' })
+        console.log(error)
       })
   }
 
   if (auth) {
-    return <Redirect to='/' />
+    return <Redirect to='/map' />
   }
 
   return (
