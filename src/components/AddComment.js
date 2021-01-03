@@ -1,12 +1,16 @@
+/* globals FormData */
+
 import { useState } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 import clsx from 'clsx'
 
-export default function AddComment () {
+export default function AddComment ({ auth }) {
   const { id } = useParams()
   const [comment, setComment] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
+
+  console.log(auth)
 
   function handleSubmit (e) {
     e.preventDefault()
@@ -14,6 +18,7 @@ export default function AddComment () {
     const data = new FormData()
     data.set('text', comment)
     data.set('poi', id)
+    data.set('user', auth.username)
     const image = document.getElementById('images').files[0]
     if (image) {
       data.set('images', image)
@@ -25,7 +30,7 @@ export default function AddComment () {
         headers: {
           'content-type': 'multipart/form-data'
         }
-      }
+      }, { auth }
     )
       .then(response => {
         setFeedbackMsg({ type: 'success', message: 'This comment was added successfully.' })
