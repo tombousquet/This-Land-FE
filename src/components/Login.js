@@ -20,6 +20,7 @@ export default function Login ({ auth, onLogin }) {
       .then(response => {
         setFeedbackMsg({ type: 'success', message: 'Logged in.' })
         onLogin({ username, password })
+        console.log({ response })
       })
       .catch(error => {
         setFeedbackMsg({ type: 'error', message: 'The username or password is invalid' })

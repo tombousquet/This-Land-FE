@@ -20,7 +20,7 @@ export default function Register ({ auth, onRegister }) {
         onRegister({ username, password })
       })
       .catch(error => {
-        setFeedbackMsg({ type: 'error', message: 'Username already exists.' })
+        setFeedbackMsg({ type: 'error', message: 'This user already exists' })
         console.log(error)
       })
   }

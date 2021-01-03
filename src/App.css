@@ -1,6 +1,6 @@
 .map-container {
-  width: 600px;
-  height: 600px;
+  width: 1000px;
+  height: 1000px;
 }
 
 .title {
@@ -56,7 +56,7 @@ li {
 }
 .footer {
   grid-area: foot;
-  background-color: #dcdcdc;
+  background-color: rgb(189, 183, 107);
 }
 
 body {

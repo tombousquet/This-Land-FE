@@ -70,6 +70,7 @@ export default function MapView () {
       }).setLngLat(location.center)
         .setPopup(newPopup)
         .addTo(mapRef.current)
+      console.log(marker)
     }
   }
 
