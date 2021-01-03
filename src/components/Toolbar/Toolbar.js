@@ -11,9 +11,9 @@ export default function Toolbar (props) {
     <header className='toolbar'>
       <nav className='toolbar_navigation'>
         <div className='toolbar_toggle-button'>
-          <DrawerToggleButton onClick={props.drawerClickHandler} />
+          <DrawerToggleButton onClick={props.handleDrawerClick} />
         </div>
-        <div className='toolbar_logo'><a href='/map'>T H I S L A N D</a></div>
+        <div className='toolbar_logo'><a href='/map'>THIS LAND</a></div>
         <div className='spacer' />
         <div className='toolbar_navigation-items'>
           <ul>
@@ -23,7 +23,7 @@ export default function Toolbar (props) {
             )}
             <div>
               {auth
-                ? <li>Logged in as *(username)* | <Link to='/login' onClick={() => setAuth(null)}>Log out</Link></li>
+                ? <li>Logged in as *(username)* | <Link to='/login' onClick={() => setAuth(null)}>Log out</Link> </li>
                 : <li><a href='/login'>Log in to add</a></li>}
             </div>
           </ul>

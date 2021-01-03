@@ -21,7 +21,7 @@ function App (props) {
     <Router>
       <div style={{ height: '100%' }}>
         <Toolbar
-          drawerClickHandler={() => setSideDrawerOpen(!sideDrawerOpen)}
+          handleDrawerClick={() => setSideDrawerOpen(!sideDrawerOpen)}
         />
         {sideDrawerOpen && <><SideDrawer /> <Backdrop /></>}
         <main style={{ marginTop: '80px' }} />
