@@ -5,6 +5,7 @@
 
 .title {
   text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .comment {
@@ -34,21 +35,23 @@ li {
   grid-template-rows: auto-fill;
   grid-template-columns: auto-fill;
   margin: 2rem auto;
-  border: 4mm ridge rgba(128, 128, 0, 0.6);
-  background-color: rosybrown;
+  border: 4mm ridge rgba(169, 169, 169, 0.6);
+  background-color: #dcdcdc;
 }
 .header {
   grid-area: head;
   background-color: antiquewhite;
   text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
+
 .nav {
   grid-area: nav;
-  background-color: rgba(128, 128, 0, 0.6);
+  background-color: rgb(119, 136, 153, 0.6);
 }
 .main {
   grid-area: main;
-  background-color: rgb(255, 218, 185);
+  background-color: antiquewhite;
   text-align: center;
 }
 .footer {
@@ -57,5 +60,129 @@ li {
 }
 
 body {
-  background-color: #5f9ea0;
+  background-color: antiquewhite;
 }
+.Login {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  background-image: url(https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/73458718_2529479587144311_3136788927516508160_o.jpg?_nc_cat=109&ccb=2&_nc_sid=730e14&_nc_ohc=IWS70Ucvi5wAX9pg9O1&_nc_ht=scontent-iad3-1.xx&oh=ae3279b2b9f2e93e8c939eca955e1eec&oe=60141497),
+    url(https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/117614451_10157903033042804_5739235729122374718_o.jpg?_nc_cat=102&ccb=2&_nc_sid=730e14&_nc_ohc=pvEZEEh4uKEAX_Kag0a&_nc_ht=scontent-iad3-1.xx&oh=fe6ab31690d58ef0eb8b95555e0b99f0&oe=6014018B);
+  min-height: 500px;
+  background-position: right top, left bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.bg-img2 {
+  background-image: url(http://www.opendurham.org//sites/default/files/images/2008_5/Lakewood_streetcar_1910.jpg);
+  min-height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 800px;
+  padding: 16px;
+  background-color: white;
+}
+.container1 {
+  position: absolute;
+  right: 200px;
+  margin: auto;
+  text-align: left;
+  padding: 16px;
+  background-color: white;
+}
+.container2 {
+  position: absolute;
+  right: 200px;
+  margin: 20px;
+  max-width: 800px;
+  padding: 16px;
+  background-color: white;
+}
+
+.container input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.container input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.container1 input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.container1 input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.container2 input[type="text"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.container2 input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+button {
+  background-color: #708090;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.Note {
+  display: grid;
+  width: 100%;
+  grid-template-areas:
+    "nav3 main"
+    "nav3 foot";
+  grid-template-rows: auto-fill;
+  grid-template-columns: auto-fill;
+  margin: 2rem auto;
+  border: 4mm ridge rgba(169, 169, 169, 0.6);
+  background-color: #dcdcdc;
+}
+.nav3 {
+  grid-area: nav;
+  background-color: rgb(119, 136, 153, 0.6);
+}
+
+/* @media only screen and (max-width: 768px) {
+  .mapview {
+    flex-direction: column;
+    justify-content: center;
+  }
+} */

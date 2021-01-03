@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: #bdb76b;
+  background: #708090;
   height: 77px;
 }
 
@@ -20,7 +20,8 @@
 .toolbar_logo a {
   color: white;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 40px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .spacer {
   flex: 1;

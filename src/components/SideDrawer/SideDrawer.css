@@ -20,18 +20,18 @@
 
 .side-drawer li {
   margin: 0.5rem 0;
-  color: rgb(102, 102, 0);
+  color: rgb(20, 20, 17);
 }
 
 .side-drawer a {
-  color: rgb(102, 102, 0);
+  color: #708090;
   text-decoration: none;
   font-size: 1.2 rem;
 }
 
 .side-drawer a:hover,
 .side-drawer a:active {
-  color: rgb(240, 230, 140);
+  color: antiquewhite;
 }
 
 @media (max-width: 769 px) {
