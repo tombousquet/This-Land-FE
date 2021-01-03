@@ -26,19 +26,25 @@ export default function Register ({ auth, onRegister }) {
   }
 
   if (auth) {
-    return <Redirect to='/' />
+    return <Redirect to='/map' />
   }
 
   return (
-    <div className='Register'>
-      <h1 className='f2 b black'>Sign Up or <Link to='/login'>Log In</Link></h1>
-      {
+    <div className='bg-img2'>
+      <div className='Register'>
+        <h1 className='f2 b black'>Sign Up or <Link to='/login'>Log In</Link></h1>
+
+        <form
+          onSubmit={handleSubmit}
+          className='container'
+        >
+          {
           feedbackMsg &&
           (
             <div className={clsx(
               'ba', 'bw1', 'pa3', 'w-50',
               {
-                'bg-': (feedbackMsg.type === 'error'),
+                'bg-white': (feedbackMsg.type === 'error'),
                 'bg-washed-red': (feedbackMsg.type === 'success')
               }
             )}
@@ -46,34 +52,34 @@ export default function Register ({ auth, onRegister }) {
               {feedbackMsg.message}
             </div>
           )
-      }
-      <form onSubmit={handleSubmit}>
-        <div className='mv2'>
+
+            }
           <label className='db b mv2 black' htmlFor='username'>Username</label>
           <input
             required
-            className='f5 pa2 w-50'
             type='text'
+            placeholder='Enter Username'
             id='username'
             value={username}
             onChange={event => setUsername(event.target.value)}
           />
-        </div>
-        <div className='mv2'>
-          <label className='db b mv2 black' htmlFor='password'>Password</label>
-          <input
-            required
-            className='f5 pa2 w-50'
-            type='password'
-            id='password'
-            value={password}
-            onChange={event => setPassword(event.target.value)}
-          />
-        </div>
-        <div className='mv2'>
-          <button type='submit'>Sign Up</button>
-        </div>
-      </form>
+          <div className='mv2'>
+            <label className='db b mv2 black' htmlFor='password'>Password</label>
+            <input
+              required
+              type='password'
+              placeholder='Enter Password'
+              id='password'
+              value={password}
+              onChange={event => setPassword(event.target.value)}
+            />
+          </div>
+          <div className='button'>
+            <button type='submit'>Sign Up</button>
+          </div>
+        </form>
+      </div>
     </div>
+
   )
 }

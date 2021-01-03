@@ -12,7 +12,7 @@ export default function MapView () {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/tombousquet/ckinqejtv0v2617ms4kflvkp8',
+      style: 'mapbox://styles/tombousquet/ckjep6fok7uyw1ao069ohe6wg',
       // centered on durham
       center: [-78.8986, 35.9940],
       zoom: 10
@@ -74,10 +74,10 @@ export default function MapView () {
   }
 
   return (
-    <div className='ma3'>
-      <div className='ma3'>
-        <h1 className='center title'>Find your location!</h1>
-      </div>
+    <div className='ma5'>
+      {/* <div className='ma5'>
+        <h1 className='center title'>Find your location and then choose a point of interest to you!</h1>
+      </div> */}
       <div className='map-container center ma3' ref={mapContainerRef} />
     </div>
   )

@@ -41,15 +41,16 @@ export default function PoiDetail () {
         </div>
         <h5 className='footer'> Category: {poi.category} </h5>
       </div>
-      <div className='note mh2 mv4'>
-        <h1 className='mh3'>Other Peoples Memories about this Place</h1>
-        <div className='Comments'>
+
+      <h1 className='mh3'>Other Peoples Memories about this Place</h1>
+      <div className='Note'>
+        <div className='main1'>
           {comments && comments.map((comments, index) => (
             <div key={index}>
               <ul>
                 <li>
-                  <h3 className='ma2'>{comments.text}</h3>
-                  {comments.images && <img src={comments.images} alt='location' width='150' />}
+                  <h3 className='nav3'>{comments.text}</h3>
+                  {comments.images && <img src={comments.images} alt='location' width='500' />}
                 </li>
               </ul>
             </div>

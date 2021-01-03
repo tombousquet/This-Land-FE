@@ -23,7 +23,7 @@ export default function AddPoi ({ auth }) {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/tombousquet/ckinqejtv0v2617ms4kflvkp8',
+      style: 'mapbox://styles/tombousquet/ckjep6fok7uyw1ao069ohe6wg',
       // centered on durham
       center: [-78.8986, 35.994],
       zoom: 13
@@ -101,9 +101,6 @@ export default function AddPoi ({ auth }) {
 
   return (
     <div className='ma3'>
-      <div className='ma3'>
-        <h1 className='center title'>Add a Point of Interest</h1>
-      </div>
       <div>
         {feedbackMsg && (
           <div
@@ -120,15 +117,18 @@ export default function AddPoi ({ auth }) {
           className='map-container center ma3 mapAdd'
           ref={mapContainerRef}
         />
-        <div>
-          <form className='form' onSubmit={handleSubmit}>
+        <div className='form'>
+          <form
+            onSubmit={handleSubmit}
+            className='container1'
+          >
             <div>
               <div className='mh2 mv3'>
                 <label className='mv2  mh2 b' htmlFor='title'>
                   Location Name
                 </label>
                 <input
-                  className='mh4'
+                  className='mh1'
                   required
                   type='text'
                   id='locationName'
@@ -238,7 +238,7 @@ export default function AddPoi ({ auth }) {
               </div>
             </div>
             <div>
-              <button className='ml6 mv2 ' type='submit'>
+              <button className='button' type='submit'>
                 Submit
               </button>
             </div>
