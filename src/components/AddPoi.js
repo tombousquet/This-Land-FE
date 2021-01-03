@@ -1,3 +1,5 @@
+/* globals FormData */
+
 import { useRef, useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
@@ -29,46 +31,47 @@ export default function AddPoi ({ auth }) {
       center: [-78.8986, 35.994],
       zoom: 13
     })
+
+    // zoom buttons
+    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right')
+
     map.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: {
           enableHighAccuracy: true
         },
         trackUserLocation: true
-      })
+      }), 'top-left'
     )
     // search and locate by address, name
-    map.addControl(
-      new MapboxGeocoder({
+
+    // const marker = new mapboxgl.Marker()
+    //   .addto(map)
+
+    const geocoder = new MapboxGeocoder(
+      {
         accessToken: mapboxgl.accessToken,
+        marker: {
+          color: 'blue'
+        },
         mapboxgl: mapboxgl
+      }, onGeocode())
+    map.addControl(geocoder)
+    console.log(geocoder)
+    // const coordinates = document.getElementById('coordinates')
 
-      })
-    )
+    function onGeocode (geocoder) {
+    //   const lngLat = geocoder.getLngLat()
+    //   coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat
 
-    // zoom buttons
-    map.addControl(new mapboxgl.NavigationControl(), 'top-right')
-
-    const coordinates = document.getElementById('coordinates')
-
-    const marker = new mapboxgl.Marker({
-      draggable: true
-    })
-      .setLngLat([-78.9, 36])
-      .addTo(map)
-
-    function onDragEnd () {
-      const lngLat = marker.getLngLat()
-      // coordinates.style.display = 'block'
-      coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat
-
-      axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + lngLat.lng + ',' + lngLat.lat + '.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
-        .then(response => {
-          setNewMarker(response.data.features[0])
-        })
+    //   axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + lngLat.lng + ',' + lngLat.lat + '.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
+    //     .then(response => {
+    //       setNewMarker(response.data.features[0])
+    //     })
     }
+    console.log(setNewMarker)
+    console.log({ newMarker })
     console.log(newMarker.place_name)
-    marker.on('dragend', onDragEnd)
 
     mapRef.current = map
 
