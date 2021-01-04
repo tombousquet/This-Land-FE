@@ -1,9 +1,10 @@
-/* globals FormData */
 
 import { useState } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 import clsx from 'clsx'
+
+let FormData
 
 export default function AddComment ({ auth }) {
   const { id } = useParams()
