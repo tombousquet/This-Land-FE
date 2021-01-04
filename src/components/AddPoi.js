@@ -75,7 +75,7 @@ export default function AddPoi ({ auth }) {
     data.set('notes', notes)
     data.set('zip_code', zipCode)
     data.set('category', category)
-    data.set('username', auth.username)
+    data.set('user', auth.username)
 
     const image = document.getElementById('images').files[0]
     if (image) {
@@ -108,7 +108,7 @@ export default function AddPoi ({ auth }) {
   if (feedbackMsg.type === 'success') {
     return (
       <div>
-        <Redirect exact to='/map' />
+        <Redirect exact to='/' />
       </div>
     )
   }
