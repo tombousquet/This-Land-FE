@@ -55,7 +55,7 @@ export default function Login ({ auth, onLogin }) {
       }
           <div>
             <form
-onSubmit={handleSubmit}
+              onSubmit={handleSubmit}
               className='container'
             >
               <label className='db b mv2 black mid-v' htmlFor='username'>Username</label>
