@@ -26,7 +26,7 @@ export default function Register ({ auth, onRegister }) {
   }
 
   if (auth) {
-    return <Redirect to='/map' />
+    return <Redirect to='/' />
   }
 
   return (
