@@ -1,4 +1,3 @@
-/* globals FormData */
 
 import { useRef, useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
@@ -7,6 +6,8 @@ import clsx from 'clsx'
 import mapboxgl from 'mapbox-gl'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
+
+let FormData
 
 export default function AddPoi ({ auth }) {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
