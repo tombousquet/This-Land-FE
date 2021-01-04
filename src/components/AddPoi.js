@@ -7,8 +7,6 @@ import mapboxgl from 'mapbox-gl'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
-let FormData
-
 export default function AddPoi ({ auth }) {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
@@ -46,30 +44,17 @@ export default function AddPoi ({ auth }) {
     )
     // search and locate by address, name
 
-    // const marker = new mapboxgl.Marker()
-    //   .addto(map)
-
-    const geocoder = new MapboxGeocoder(
+    const marker = new MapboxGeocoder(
       {
         accessToken: mapboxgl.accessToken,
         marker: {
           color: 'blue'
         },
         mapboxgl: mapboxgl
-      }, onGeocode())
-    map.addControl(geocoder)
-    console.log(geocoder)
-    // const coordinates = document.getElementById('coordinates')
+      })
+    map.addControl(marker)
+    console.log(marker)
 
-    function onGeocode (geocoder) {
-    //   const lngLat = geocoder.getLngLat()
-    //   coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat
-
-    //   axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + lngLat.lng + ',' + lngLat.lat + '.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
-    //     .then(response => {
-    //       setNewMarker(response.data.features[0])
-    //     })
-    }
     console.log(setNewMarker)
     console.log({ newMarker })
     console.log(newMarker.place_name)

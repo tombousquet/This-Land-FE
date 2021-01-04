@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-export default function PoiDetail (auth) {
+export default function PoiDetail () {
   const { id } = useParams()
   const [poi, setPoi] = useState({})
-  const [deletedPoi, setDeletedPoi] = useState(false)
+  // const [deletedPoi, setDeletedPoi] = useState(false)
   const [addComment, setAddComment] = useState(false)
-  const [deletedComment, setDeletedComment] = useState(false)
+  // const [deletedComment, setDeletedComment] = useState(false)
 
   useEffect(() => {
     axios.get('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
@@ -17,31 +17,31 @@ export default function PoiDetail (auth) {
       })
   }, [id])
 
-  function deletePoi () {
-    axios.delete('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
-      auth: auth
-    })
-      .then(response => {
-        setDeletedPoi(true)
-      })
-  }
+  // function deletePoi () {
+  //   axios.delete('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
+  //     // auth: auth
+  //   })
+  //     .then(response => {
+  //       setDeletedPoi(true)
+  //     })
+  // }
 
-  if (deletedPoi) {
-    return <Redirect to='/map' />
-  }
+  // if (deletedPoi) {
+  //   return <Redirect to='/map' />
+  // }
 
-  function deleteComment () {
-    axios.delete('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
-      auth: auth
-    })
-      .then(response => {
-        setDeletedComment(true)
-      })
-  }
+  // function deleteComment () {
+  //   axios.delete('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
+  //     // auth: auth
+  //   })
+  //     .then(response => {
+  //       setDeletedComment(true)
+  //     })
+  // }
 
-  if (deletedComment) {
-    return <Redirect to={'/detail/' + id} />
-  }
+  // if (deletedComment) {
+  //   return <Redirect to={'/detail/' + id} />
+  // }
 
   function newComment () {
     setAddComment(true)
@@ -69,10 +69,10 @@ export default function PoiDetail (auth) {
         </div>
         <h5 className='footer'> Category: {poi.category} </h5>
       </div>
-      <div>
+      {/* <div>
         {auth === poi.user &&
           <button onClick={deletePoi}>Delete this location</button>}
-      </div>
+      </div> */}
       <div className='note mh2 mv4'>
         <h1 className='mh3'>Other Peoples Memories about this Place</h1>
         <div className='Comments'>
@@ -82,10 +82,10 @@ export default function PoiDetail (auth) {
                 <li>
                   <h3 className='ma2'>{comments.text}</h3>
                   {comments.images && <img src={comments.images} alt='location' width='150' />}
-                  <div>
+                  {/* <div>
                     {auth === poi.TellYourStories.user &&
                       <button onClick={deleteComment}>Delete this comment</button>}
-                  </div>
+                  </div> */}
                 </li>
               </ul>
             </div>
