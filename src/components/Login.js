@@ -29,7 +29,7 @@ export default function Login ({ auth, onLogin }) {
   }
 
   if (auth) {
-    return <Redirect to='/map' />
+    return <Redirect to='/' />
   }
 
   return (

@@ -23,7 +23,7 @@ export default function AddComment ({ auth }) {
       data.set('images', image)
     }
 
-    axios.post('http://this-land-team-5.herokuapp.com/api/tellyourstory/',
+    axios.post('https://this-land-team-5.herokuapp.com/api/tellyourstory/',
       data,
       {
         headers: {
