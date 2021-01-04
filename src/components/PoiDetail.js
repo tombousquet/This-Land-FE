@@ -50,6 +50,7 @@ export default function PoiDetail () {
   console.log(poi)
 
   const comments = poi.TellYourStories
+  console.log({ comments })
 
   if (addComment) {
     return <Redirect to={'/comment/' + id + '/add'} />
@@ -80,6 +81,7 @@ export default function PoiDetail () {
             <div key={index}>
               <ul>
                 <li>
+                  <h4>{comments.username}</h4>
                   <h3 className='ma2'>{comments.text}</h3>
                   {comments.images && <img src={comments.images} alt='location' width='150' />}
                   {/* <div>
