@@ -33,7 +33,7 @@ export default function MapView () {
 
     mapRef.current = map
 
-    axios.get('http://this-land-team-5.herokuapp.com/api/pointsofinterest/')
+    axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/')
       .then(response => {
         setPois(response.data)
         console.log('pois:', response.data)
