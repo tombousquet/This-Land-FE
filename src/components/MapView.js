@@ -70,7 +70,7 @@ export default function MapView () {
         <a href='/detail/${poi.id}'>More detail</a>
         </div>`)
 
-      const marker = new mapboxgl.Marker({
+      new mapboxgl.Marker({
         color: '#FFFFFF'
       }).setLngLat(location.center)
         .setPopup(newPopup)
