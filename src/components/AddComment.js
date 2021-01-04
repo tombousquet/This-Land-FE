@@ -17,7 +17,7 @@ export default function AddComment ({ auth }) {
     const data = new FormData()
     data.set('text', comment)
     data.set('poi', id)
-    data.set('user', auth.username)
+    // data.set('user', auth.username)
     const image = document.getElementById('images').files[0]
     if (image) {
       data.set('images', image)
@@ -71,8 +71,11 @@ export default function AddComment ({ auth }) {
           </div>
         )
       }
-      <form className='form' onSubmit={handleSubmit}>
-        <form className='container2'>
+      <div>
+        <form
+          onSubmit={handleSubmit}
+          className='container2'
+        >
           <div>
             <div className='mh2 mv3'>
               <label className='mv2  mh2 b' htmlFor='title'>Comments</label>
@@ -102,7 +105,7 @@ export default function AddComment ({ auth }) {
             <button className='button' type='submit'>Submit</button>
           </div>
         </form>
-      </form>
+      </div>
     </div>
   )
 }
