@@ -59,26 +59,28 @@ export default function MapView () {
   const addMarker = (location, poi) => {
     if (location.center && mapRef.current) {
       const locationName = poi.location_name
-
-      const newPopup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+      console.log({ poi })
+      const newPopup = new mapboxgl.Popup(
+        {
+          closeOnClick: false,
+          offset: 25
+        }
+      ).setHTML(
         `<div>
-        <h5'>${locationName}</h5>
+        <h5>${locationName}</h5>
         <a href='/detail/${poi.id}'>More detail</a>
         </div>`)
+
       const marker = new mapboxgl.Marker({
         color: '#FFFFFF'
       }).setLngLat(location.center)
         .setPopup(newPopup)
         .addTo(mapRef.current)
-      console.log(marker)
     }
   }
 
   return (
     <div className='ma5'>
-      {/* <div className='ma5'>
-        <h1 className='center title'>Find your location and then choose a point of interest to you!</h1>
-      </div> */}
       <div className='map-container center ma3' ref={mapContainerRef} />
     </div>
   )
