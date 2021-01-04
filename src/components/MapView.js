@@ -62,7 +62,6 @@ export default function MapView () {
       console.log({ poi })
       const newPopup = new mapboxgl.Popup(
         {
-          closeOnClick: false,
           offset: 25
         }
       ).setHTML(
