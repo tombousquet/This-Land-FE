@@ -23,7 +23,7 @@ function App (props) {
         <Toolbar
           handleDrawerClick={() => setSideDrawerOpen(!sideDrawerOpen)}
         />
-        {sideDrawerOpen && <><SideDrawer /> <Backdrop /></>}
+        {sideDrawerOpen && <><SideDrawer /> <Backdrop onClick={() => setSideDrawerOpen(false)} /></>}
         <main style={{ marginTop: '80px' }} />
         <Switch>
           <Route path='/signup'>
