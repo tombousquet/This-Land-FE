@@ -23,6 +23,7 @@ h1 {
 
 li {
   color: white;
+  list-style-type: none;
 }
 
 .POI {
@@ -35,28 +36,33 @@ li {
   grid-template-rows: auto-fill;
   grid-template-columns: auto-fill;
   margin: 2rem auto;
-  border: 4mm ridge rgba(169, 169, 169, 0.6);
-  background-color: #dcdcdc;
+  border: 10mm ridge black;
+  background-color: white;
 }
-.header {
+.head {
   grid-area: head;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
+  position: center;
   text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .nav {
   grid-area: nav;
-  background-color: rgb(119, 136, 153, 0.6);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: medium;
+  position: center;
+
+  /* background-color: rgb(119, 136, 153, 0.6); */
 }
 .main {
   grid-area: main;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   text-align: center;
 }
 .footer {
   grid-area: foot;
-  background-color: rgb(189, 183, 107);
+  /* background-color: rgb(119, 136, 153, 0.6); */
 }
 
 body {
@@ -165,6 +171,7 @@ input[type="password"] {
   display: grid;
   width: 100%;
   grid-template-areas:
+    "head head"
     "nav3 main"
     "nav3 foot";
   grid-template-rows: auto-fill;
@@ -175,12 +182,22 @@ input[type="password"] {
 }
 .nav3 {
   grid-area: nav;
-  background-color: rgb(119, 136, 153, 0.6);
+  /* background-color: rgb(119, 136, 153, 0.6); */
+}
+.Comment {
+  border: 2mm ridge black;
 }
 
-/* @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .mapview {
     flex-direction: column;
     justify-content: center;
   }
-} */
+}
+.header {
+  grid-area: head;
+  /* background-color: antiquewhite; */
+  position: center;
+  text-align: left;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
