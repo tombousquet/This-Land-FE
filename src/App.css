@@ -146,7 +146,8 @@ input[type="password"] {
   border: none;
   background: #f1f1f1;
 }
-button {
+
+.submit {
   background-color: #708090;
   color: white;
   padding: 16px 20px;

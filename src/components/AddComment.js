@@ -95,7 +95,7 @@ export default function AddComment ({ auth }) {
                 placeholder='Choose your image to add'
               />
             </div>
-            <button className='button' type='submit'>Submit</button>
+            <button className='submit' type='submit'>Submit</button>
           </div>
         </form>
       </div>

@@ -13,9 +13,9 @@ export default function MapView () {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/tombousquet/ckjep6fok7uyw1ao069ohe6wg',
-      // centered on durham
-      center: [-78.8986, 35.9940],
-      zoom: 10
+      // centered on lower 48
+      center: [-96, 35],
+      zoom: 3
     })
 
     // locate user
@@ -38,6 +38,45 @@ export default function MapView () {
         setPois(response.data)
         console.log('pois:', response.data)
       })
+
+    new mapboxgl.Popup(
+      {
+        closeOnClick: false,
+        offset: 25
+      }
+    )
+      .setLngLat([-110, 42])
+      .addTo(mapRef.current)
+      .setHTML(
+        `<div>
+        <h5>Find your location use the geolocater button in the top-right corner</h5>
+        </div>`)
+
+    new mapboxgl.Popup(
+      {
+        closeOnClick: false,
+        offset: 25
+      }
+    )
+      .setLngLat([-100, 27])
+      .addTo(mapRef.current)
+      .setHTML(
+            `<div>
+            <h5>Select a marker on the map to see the name of the location and a link for more details</h5>
+            </div>`)
+
+    new mapboxgl.Popup(
+      {
+        closeOnClick: false,
+        offset: 25
+      }
+    )
+      .setLngLat([-85, 38])
+      .addTo(mapRef.current)
+      .setHTML(
+                `<div>
+                <h5>Add a story to a particular point of interest or create your own point of interest to learn more!</h5>
+                </div>`)
 
     return () => map.remove()
   }, [])
