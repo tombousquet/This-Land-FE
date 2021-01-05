@@ -38,7 +38,7 @@ function App (props) {
               onLogin={setAuth}
             />
           </Route>
-          <Route path='/map'>
+          <Route exact path='/'>
             <MapView />
           </Route>
           <Route path='/detail/:id'>

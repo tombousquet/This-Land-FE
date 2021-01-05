@@ -33,7 +33,7 @@ export default function MapView () {
 
     mapRef.current = map
 
-    axios.get('http://this-land-team-5.herokuapp.com/api/pointsofinterest/')
+    axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/')
       .then(response => {
         setPois(response.data)
         console.log('pois:', response.data)
@@ -62,7 +62,6 @@ export default function MapView () {
       console.log({ poi })
       const newPopup = new mapboxgl.Popup(
         {
-          closeOnClick: false,
           offset: 25
         }
       ).setHTML(
@@ -71,7 +70,7 @@ export default function MapView () {
         <a href='/detail/${poi.id}'>More detail</a>
         </div>`)
 
-      const marker = new mapboxgl.Marker({
+      new mapboxgl.Marker({
         color: '#FFFFFF'
       }).setLngLat(location.center)
         .setPopup(newPopup)

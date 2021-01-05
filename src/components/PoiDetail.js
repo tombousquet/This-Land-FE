@@ -10,7 +10,7 @@ export default function PoiDetail () {
   // const [deletedComment, setDeletedComment] = useState(false)
 
   useEffect(() => {
-    axios.get('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
+    axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
       .then(response => {
         setPoi(response.data)
         console.log(response.data)
@@ -18,7 +18,7 @@ export default function PoiDetail () {
   }, [id])
 
   // function deletePoi () {
-  //   axios.delete('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
+  //   axios.delete('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
   //     // auth: auth
   //   })
   //     .then(response => {
@@ -31,7 +31,7 @@ export default function PoiDetail () {
   // }
 
   // function deleteComment () {
-  //   axios.delete('http://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
+  //   axios.delete('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
   //     // auth: auth
   //   })
   //     .then(response => {
@@ -50,6 +50,7 @@ export default function PoiDetail () {
   console.log(poi)
 
   const comments = poi.TellYourStories
+  console.log({ comments })
 
   if (addComment) {
     return <Redirect to={'/comment/' + id + '/add'} />
@@ -80,6 +81,7 @@ export default function PoiDetail () {
             <div key={index}>
               <ul>
                 <li>
+                  <h4>{comments.username}</h4>
                   <h3 className='ma2'>{comments.text}</h3>
                   {comments.images && <img src={comments.images} alt='location' width='150' />}
                   {/* <div>

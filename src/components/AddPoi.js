@@ -84,7 +84,7 @@ export default function AddPoi ({ auth }) {
 
     axios
       .post(
-        'http://this-land-team-5.herokuapp.com/api/pointsofinterest/',
+        'https://this-land-team-5.herokuapp.com/api/pointsofinterest/',
         data,
         {
           headers: {
@@ -108,7 +108,7 @@ export default function AddPoi ({ auth }) {
   if (feedbackMsg.type === 'success') {
     return (
       <div>
-        <Redirect exact to='/map' />
+        <Redirect exact to='/' />
       </div>
     )
   }
