@@ -20,7 +20,6 @@ export default function AddPoi ({ auth }) {
   const [notes, setNotes] = useState('')
   const [category, setCategory] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
-  const [newMarker, setNewMarker] = useState({})
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -71,7 +70,7 @@ export default function AddPoi ({ auth }) {
     mapRef.current = map
 
     return () => map.remove()
-  }, [newMarker])
+  }, [])
 
   function handleSubmit (event) {
     event.preventDefault()
