@@ -53,11 +53,20 @@ export default function AddPoi ({ auth }) {
         mapboxgl: mapboxgl
       })
     map.addControl(marker)
-    console.log(marker)
 
-    console.log(setNewMarker)
-    console.log({ newMarker })
-    console.log(newMarker.place_name)
+    // This runs when a result is selected in the map search.
+    marker.on('result', function (event) {
+      const result = event.result
+      let [location, address, city, stateAndZip] = result.place_name.split(', ')
+      stateAndZip = stateAndZip.split(' ')
+      const zip = stateAndZip[stateAndZip.length - 1]
+      const state = stateAndZip.slice(0, stateAndZip.length - 1).join(' ')
+      setLocationName(location)
+      setStreetAddress(address)
+      setCity(city)
+      setState(state)
+      setZipCode(zip)
+    })
 
     mapRef.current = map
 
@@ -232,6 +241,7 @@ export default function AddPoi ({ auth }) {
                   id='images'
                   placeholder='Choose your image to add'
                 />
+                <button type='reset'>Clear image</button>
               </div>
               <div className='mh2 mv3'>
                 <label className='mv2 b mh2' htmlFor='status'>
@@ -253,7 +263,7 @@ export default function AddPoi ({ auth }) {
               </div>
             </div>
             <div>
-              <button className='button' type='submit'>
+              <button className='submit' type='submit'>
                 Submit
               </button>
             </div>
