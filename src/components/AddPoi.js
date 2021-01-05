@@ -75,7 +75,7 @@ export default function AddPoi ({ auth }) {
     data.set('notes', notes)
     data.set('zip_code', zipCode)
     data.set('category', category)
-    data.set('user', auth.username)
+    data.set('username', auth.username)
 
     const image = document.getElementById('images').files[0]
     if (image) {
