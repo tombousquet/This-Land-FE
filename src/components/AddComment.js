@@ -17,11 +17,7 @@ export default function AddComment ({ auth }) {
     const data = new FormData()
     data.set('text', comment)
     data.set('poi', id)
-<<<<<<< HEAD
-    // data.set('user', auth.username)
-=======
     data.set('username', auth.username)
->>>>>>> origin
     const image = document.getElementById('images').files[0]
     if (image) {
       data.set('images', image)
