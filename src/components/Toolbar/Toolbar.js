@@ -17,7 +17,7 @@ export default function Toolbar (props) {
         <div className='spacer' />
         <div className='toolbar_navigation-items'>
           <ul>
-            <li><a href='/'>Home</a></li>
+            <li><a href='/'>Map</a></li>
             {auth && (
               <li><a href='/add'>Add a Point of Interest</a></li>
             )}

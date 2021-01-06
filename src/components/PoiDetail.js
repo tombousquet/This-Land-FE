@@ -59,40 +59,33 @@ export default function PoiDetail () {
   return (
     <div>
       <div className='POI'>
-        <div>
-          <h2 className='head'> {poi.location_name} </h2>
-          <h3 className='nav2'>{poi.street_address} {poi.city} {poi.state} {poi.zip_code}
-          </h3>
-        </div>
-        <div className='main'>
-          {poi.images && <img src={poi.images} alt='location' width='500' />}
-        </div>
-        <div className='nav'>
+        <div className='polaroid'> {poi.images && <img src={poi.images} alt='location' width='100%/>}>
+          <div class "caption"> 
+          <p> {poi.location_name} </p>
+          <p> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </p>
           <p> {poi.notes} </p>
         </div>
-        {/* <h5 className='footer'> {poi.category} </h5> */}
-      </div>
-      {/* <div>
+     </div>
+      <div>
         {auth === poi.user &&
           <button onClick={deletePoi}>Delete this location</button>}
-      </div> */}
+      </div>
       <div>
-        <h1 className='mh3'>Other Peoples Memories about this Place
-        </h1>
-        <div className='Note'>
+        <h1> Other Peoples Memories about this Place </h1>
+        <div>
           {comments && comments.map((comments, index) => (
             <div key={index}>
               <ul>
-                <li className='Comment'>
-                  <h4 className='header'>{comments.username}</h4>
-                  <h3 className='nav3'>{comments.text}</h3>
-                  <div className='main'>
-                    {comments.images && <img src={comments.images} alt='location' width='400' />}
-                  </div>
-                  {/* <div>
+                <li>
+                  <h4>{comments.username}</h4>
+                  <h3>{comments.text}</h3>
+                  <div>
+                   {poi.images && <img src={poi.images} alt='location' width='284' height='213'/>}
+                  </div> 
+                   {/* <div>
                     {auth === poi.TellYourStories.user &&
                       <button onClick={deleteComment}>Delete this comment</button>}
-                  </div> */}
+                  </div>  */}
                 </li>
               </ul>
             </div>
