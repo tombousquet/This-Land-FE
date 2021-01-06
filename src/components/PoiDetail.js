@@ -66,6 +66,7 @@ export default function PoiDetail () {
           {poi.images && <img src={poi.images} alt='location' width='500' />}
         </div>
         <div className='nav'>
+          <p>Created by: {poi.username}</p>
           <p> {poi.notes} </p>
         </div>
         <h5 className='footer'> Category: {poi.category} </h5>
@@ -95,7 +96,7 @@ export default function PoiDetail () {
         </div>
       </div>
       <div className='mh1'>
-        <button className='mh2 submit' onClick={newComment}>Add your own memory or story to this place!</button>
+        <button className='mh2' onClick={newComment}>Add your own memory or story to this place!</button>
       </div>
     </div>
   )
