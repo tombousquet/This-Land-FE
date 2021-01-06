@@ -88,7 +88,7 @@ export default function PoiDetail () {
         </div>
       </div>
       <div className='mh1'>
-        <button className='mh2 submit' onClick={newComment}>Add your own memory or story to this place!</button>
+        <button className='mh2' onClick={newComment}>Add your own memory or story to this place!</button>
       </div>
     </div>
   )
