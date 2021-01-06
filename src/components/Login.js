@@ -27,7 +27,7 @@ export default function Login ({ auth, onLogin, onToken }) {
       })
   }
 
-  if (auth) {
+  if (feedbackMsg.type === 'success') {
     return <Redirect to='/' />
   }
 

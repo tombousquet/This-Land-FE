@@ -29,8 +29,8 @@ export default function AddPoi ({ auth, token }) {
       container: mapContainerRef.current,
       style: 'mapbox://styles/tombousquet/ckjep6fok7uyw1ao069ohe6wg',
       // centered on durham
-      center: [-78.8986, 35.994],
-      zoom: 13
+      center: [-96, 35],
+      zoom: 2
     })
 
     // zoom buttons
@@ -52,6 +52,7 @@ export default function AddPoi ({ auth, token }) {
         marker: {
           color: 'blue'
         },
+        placeholder: 'Find your location',
         mapboxgl: mapboxgl
       })
     map.addControl(marker)
@@ -86,7 +87,7 @@ export default function AddPoi ({ auth, token }) {
     data.set('notes', notes)
     data.set('zip_code', zipCode)
     data.set('category', category)
-    data.set('username', auth)
+    data.set('user', auth.user)
 
     const image = document.getElementById('images').files[0]
     if (image) {

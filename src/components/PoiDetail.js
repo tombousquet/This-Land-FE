@@ -73,22 +73,22 @@ export default function PoiDetail () {
       </div> */}
       <div>
         <h1> Other Peoples Memories about this Place </h1>
+        <div className='mh1'>
+          <button className='mh2 center' onClick={newComment}>Add your own memory or story to this place!</button>
+        </div>
         <div className='body2'>
-          <div className='polaroid1 rotate_left'>
-            {poi.images && <img src={poi.images} alt='location' width='284' height='213' />}
-          </div>
           <div className='caption1'>
             {comments && comments.map((comments, index) => (
               <div key={index}>
-                <p> {comments.username} love </p>
-                <p> {comments.text} heart </p>
+                <div className='polaroid1 rotate_left'>
+                  {comments.images && <img src={comments.images} alt='location' width='284' height='213' />}
+                  <p> {comments.username} </p>
+                  <p> {comments.text} </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
-      <div className='mh1'>
-        <button className='mh2' onClick={newComment}>Add your own memory or story to this place!</button>
       </div>
     </div>
   )

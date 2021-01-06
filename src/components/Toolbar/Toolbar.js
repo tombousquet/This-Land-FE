@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 export default function Toolbar (props) {
   const [auth, setAuth] = useLocalStorage('poi_auth', null)
-
+  console.log({ auth })
   return (
     <header className='toolbar'>
       <nav className='toolbar_navigation'>
