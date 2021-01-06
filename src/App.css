@@ -37,40 +37,7 @@ h1 {
 
 li {
   color: white;
-}
-
-.POI {
-  display: grid;
-  width: 100%;
-  grid-template-areas:
-    "head head"
-    "nav main"
-    "nav2 foot";
-  grid-template-rows: auto-fill;
-  grid-template-columns: auto-fill;
-  margin: 2rem auto;
-  border: 4mm ridge rgba(169, 169, 169, 0.6);
-  background-color: #dcdcdc;
-}
-.header {
-  grid-area: head;
-  background-color: antiquewhite;
-  text-align: center;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-}
-
-.nav {
-  grid-area: nav;
-  background-color: rgb(119, 136, 153, 0.6);
-}
-.main {
-  grid-area: main;
-  background-color: antiquewhite;
-  text-align: center;
-}
-.footer {
-  grid-area: foot;
-  background-color: rgb(189, 183, 107);
+  list-style-type: none;
 }
 
 body {
@@ -174,27 +141,50 @@ input[type="password"] {
 .btn:hover {
   opacity: 1;
 }
-
-.Note {
-  display: grid;
+div.polaroid {
   width: 100%;
-  grid-template-areas:
-    "nav3 main"
-    "nav3 foot";
-  grid-template-rows: auto-fill;
-  grid-template-columns: auto-fill;
-  margin: 2rem auto;
-  border: 4mm ridge rgba(169, 169, 169, 0.6);
-  background-color: #dcdcdc;
+  padding: 16px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(134, 129, 129, 0.19);
+  margin-bottom: 25px;
+  margin-top: 25px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-.nav3 {
-  grid-area: nav;
-  background-color: rgb(119, 136, 153, 0.6);
+div.caption {
+  text-align: center;
+  padding: 10px 20px;
+}
+.body1 {
+  margin: 25px;
 }
 
-/* @media only screen and (max-width: 768px) {
+div.polaroid1 {
+  width: 284px;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid BFBFBF;
+  background-color: white;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+div.rotate_left {
+  float: left;
+  -ms-transform: rotate(-8deg);
+  -webkit-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+}
+div.caption1 {
+  text-align: center;
+  padding: 10px 20px;
+}
+.body2 {
+  margin: 30px;
+}
+
+@media only screen and (max-width: 768px) {
   .mapview {
     flex-direction: column;
     justify-content: center;
+    height: 350px;
+    width: 350px;
   }
-} */
+}

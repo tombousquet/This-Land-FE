@@ -9,7 +9,7 @@ export default function SideDrawer (props) {
   return (
     <nav className='side-drawer'>
       <ul>
-        <li><a href='/'>Home</a></li>
+        <li><a href='/'>Map</a></li>
         <li><a href='/add'>Add a Point of Interest</a></li>
         <div>
           {auth
