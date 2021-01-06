@@ -1,6 +1,25 @@
 .map-container {
-  width: 700px;
-  height: 700px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  margin-top: 77px;
+}
+
+.mapAdd {
+  width: 400px;
+  height: 400px;
+}
+
+.mapboxgl-popup-content {
+  margin: 0px;
+  padding: 0px;
+}
+
+h5 {
+  margin: 0px;
+  padding: 5px;
+  font-family: sans-serif;
 }
 
 .title {
@@ -10,11 +29,6 @@
 
 .comment {
   border: solid black 2px;
-}
-
-.mapAdd {
-  width: 400px;
-  height: 400px;
 }
 
 h1 {

@@ -7,8 +7,11 @@ import mapboxgl from 'mapbox-gl'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
-export default function AddPoi ({ auth }) {
+export default function AddPoi ({ auth, token }) {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
+
+  console.log({ auth })
+  console.log({ token })
 
   const mapContainerRef = useRef(null)
   const mapRef = useRef(null)
@@ -83,7 +86,7 @@ export default function AddPoi ({ auth }) {
     data.set('notes', notes)
     data.set('zip_code', zipCode)
     data.set('category', category)
-    data.set('username', auth.username)
+    data.set('username', auth)
 
     const image = document.getElementById('images').files[0]
     if (image) {
@@ -96,9 +99,10 @@ export default function AddPoi ({ auth }) {
         data,
         {
           headers: {
-            'content-type': 'multipart/form-data'
+            'content-type': 'multipart/form-data',
+            Authorization: `Token ${token}`
           }
-        }, { auth }
+        }
       )
       .then((response) => {
         setFeedbackMsg({
@@ -137,7 +141,7 @@ export default function AddPoi ({ auth }) {
         )}
         <pre id='coordinates' className='coordinates' />
         <div
-          className='map-container center ma3 mapAdd'
+          className='center mapAdd'
           ref={mapContainerRef}
         />
         <div className='form'>

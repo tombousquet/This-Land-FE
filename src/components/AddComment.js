@@ -4,7 +4,7 @@ import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 import clsx from 'clsx'
 
-export default function AddComment ({ auth }) {
+export default function AddComment ({ auth, token }) {
   const { id } = useParams()
   const [comment, setComment] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
@@ -27,7 +27,8 @@ export default function AddComment ({ auth }) {
       data,
       {
         headers: {
-          'content-type': 'multipart/form-data'
+          'content-type': 'multipart/form-data',
+          Authorization: `Token ${token}`
         }
       }, { auth }
     )
