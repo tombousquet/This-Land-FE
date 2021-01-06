@@ -58,38 +58,33 @@ export default function PoiDetail () {
 
   return (
     <div>
-      <div className='POI'>
-        <div className='polaroid'> {poi.images && <img src={poi.images} alt='location' width='100%/>}>
-          <div class "caption"> 
-          <p> {poi.location_name} </p>
-          <p> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </p>
-          <p> {poi.notes} </p>
+      <div className='body1'>
+        <div className='polaroid'> {poi.images && <img src={poi.images} alt='location' width='80%' />}
+          <div className='caption'>
+            <p> {poi.location_name} love </p>
+            <p> {poi.street_address} friends{poi.city} {poi.state} {poi.zip_code} </p>
+            <p> {poi.notes} family </p>
+          </div>
         </div>
-     </div>
-      <div>
+      </div>
+      {/* <div>
         {auth === poi.user &&
           <button onClick={deletePoi}>Delete this location</button>}
-      </div>
+      </div> */}
       <div>
         <h1> Other Peoples Memories about this Place </h1>
-        <div>
-          {comments && comments.map((comments, index) => (
-            <div key={index}>
-              <ul>
-                <li>
-                  <h4>{comments.username}</h4>
-                  <h3>{comments.text}</h3>
-                  <div>
-                   {poi.images && <img src={poi.images} alt='location' width='284' height='213'/>}
-                  </div> 
-                   {/* <div>
-                    {auth === poi.TellYourStories.user &&
-                      <button onClick={deleteComment}>Delete this comment</button>}
-                  </div>  */}
-                </li>
-              </ul>
-            </div>
-          ))}
+        <div className='body2'>
+          <div className='polaroid1 rotate_left'>
+            {poi.images && <img src={poi.images} alt='location' width='284' height='213' />}
+          </div>
+          <div className='caption1'>
+            {comments && comments.map((comments, index) => (
+              <div key={index}>
+                <p> {comments.username} love </p>
+                <p> {comments.text} heart </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className='mh1'>

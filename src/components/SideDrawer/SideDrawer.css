@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 0%;
+  width: 70%;
   max-width: 400px;
   z-index: 200;
 }
@@ -20,7 +20,7 @@
 
 .side-drawer li {
   margin: 0.5rem 0;
-  color: rgb(20, 20, 17);
+  color: #708090;
 }
 
 .side-drawer a {

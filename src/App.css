@@ -128,14 +128,21 @@ input[type="password"] {
   opacity: 1;
 }
 div.polaroid {
-  width: 80%;
+  width: 100%;
+  padding: 16px;
   background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(134, 129, 129, 0.19);
   margin-bottom: 25px;
+  margin-top: 25px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-div.container {
+div.caption {
   text-align: center;
   padding: 10px 20px;
+}
+.body1 {
+  margin: 25px;
 }
 
 div.polaroid1 {
@@ -151,13 +158,19 @@ div.rotate_left {
   -webkit-transform: rotate(-8deg);
   transform: rotate(-8deg);
 }
+div.caption1 {
+  text-align: center;
+  padding: 10px 20px;
+}
+.body2 {
+  margin: 30px;
+}
+
 @media only screen and (max-width: 768px) {
   .mapview {
     flex-direction: column;
     justify-content: center;
+    height: 350px;
+    width: 350px;
   }
 }
-/* .PopUp {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  background-color: aqua;
-} */
