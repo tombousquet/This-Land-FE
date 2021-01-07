@@ -87,7 +87,7 @@ export default function AddPoi ({ auth, token }) {
     data.set('notes', notes)
     data.set('zip_code', zipCode)
     data.set('category', category)
-    data.set('user', 'tom')
+    data.set('user', 'auth.user')
 
     const image = document.getElementById('images').files[0]
     if (image) {
@@ -118,13 +118,13 @@ export default function AddPoi ({ auth, token }) {
       })
   }
 
-  // if (feedbackMsg.type === 'success') {
-  //   return (
-  //     <div>
-  //       <Redirect exact to='/' />
-  //     </div>
-  //   )
-  // }
+  if (feedbackMsg.type === 'success') {
+    return (
+      <div>
+        <Redirect exact to='/' />
+      </div>
+    )
+  }
 
   return (
     <div className='ma3'>

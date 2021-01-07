@@ -128,8 +128,7 @@ export default function MapView () {
       console.log({ poi })
       const newPopup = new mapboxgl.Popup(
         {
-          offset: 25,
-          size: 'large'
+          offset: 25
         }
       ).setHTML(
         `<div className='marker-popup'>
