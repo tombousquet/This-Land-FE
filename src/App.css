@@ -13,7 +13,12 @@
 
 .mapboxgl-popup-content {
   margin: 0px;
-  padding: 0px;
+  padding: 10px;
+}
+
+a {
+  color: black;
+  font-family: sans-serif;
 }
 
 h5 {

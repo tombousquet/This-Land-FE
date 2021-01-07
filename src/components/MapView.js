@@ -58,7 +58,7 @@ export default function MapView () {
         .addTo(mapRef.current)
         .setHTML(
         `<div>
-        <h5>Find your location use the geolocater button in the top-right corner</h5>
+        <h5>Use the geolocater button in the top-right corner to find your location</h5>
         </div>`)
 
       popup1.on('close', function () {
@@ -128,16 +128,16 @@ export default function MapView () {
       console.log({ poi })
       const newPopup = new mapboxgl.Popup(
         {
-          offset: 25
+          offset: 25,
+          size: 'large'
         }
       ).setHTML(
-        `<div>
-        <h5>${locationName}</h5>
-        <a href='/detail/${poi.id}'>More detail</a>
+        `<div className='marker-popup'>
+        <a href='/detail/${poi.id}'>${locationName}</a>
         </div>`)
 
       new mapboxgl.Marker({
-        color: '#FFFFFF'
+        color: '#708090'
       }).setLngLat(location.center)
         .setPopup(newPopup)
         .addTo(mapRef.current)

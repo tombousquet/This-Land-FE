@@ -23,7 +23,7 @@ export default function Register ({ auth, onRegister }) {
       })
       .catch(error => {
         setFeedbackMsg({ type: 'error', message: 'This account information is incorrect' })
-        console.log(error)
+        console.log('here is the error message', error)
       })
   }
 
