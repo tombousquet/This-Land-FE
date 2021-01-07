@@ -45,7 +45,9 @@ function App (props) {
             <MapView />
           </Route>
           <Route path='/detail/:id'>
-            <PoiDetail />
+            <PoiDetail
+              token={token}
+            />
           </Route>
           <Route path='/comment/:id/add'>
             <AddComment
