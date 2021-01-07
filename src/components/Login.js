@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-export default function Login ({ auth, onLogin }) {
+export default function Login ({ auth, onLogin, onToken }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
@@ -11,16 +11,15 @@ export default function Login ({ auth, onLogin }) {
   function handleSubmit (event) {
     event.preventDefault()
 
-    axios.get('https://this-land-team-5.herokuapp.com/api/userpass/', {
-      auth: {
-        username: username,
-        password: password
-      }
+    axios.post('https://this-land-team-5.herokuapp.com/auth/token/login', {
+      username: username,
+      password: password
     })
       .then(response => {
         setFeedbackMsg({ type: 'success', message: 'Logged in.' })
-        onLogin({ username, password })
-        console.log({ response })
+        onLogin(username, password)
+        onToken(response.data.auth_token)
+        console.log(response.data.auth_token)
       })
       .catch(error => {
         setFeedbackMsg({ type: 'error', message: 'The username or password is invalid' })
@@ -28,7 +27,7 @@ export default function Login ({ auth, onLogin }) {
       })
   }
 
-  if (auth) {
+  if (feedbackMsg.type === 'success') {
     return <Redirect to='/' />
   }
 

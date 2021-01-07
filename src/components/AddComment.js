@@ -4,7 +4,7 @@ import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 import clsx from 'clsx'
 
-export default function AddComment ({ auth }) {
+export default function AddComment ({ auth, token }) {
   const { id } = useParams()
   const [comment, setComment] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
@@ -17,7 +17,7 @@ export default function AddComment ({ auth }) {
     const data = new FormData()
     data.set('text', comment)
     data.set('poi', id)
-    data.set('username', auth.username)
+    data.set('user', auth.user)
     const image = document.getElementById('images').files[0]
     if (image) {
       data.set('images', image)
@@ -27,7 +27,8 @@ export default function AddComment ({ auth }) {
       data,
       {
         headers: {
-          'content-type': 'multipart/form-data'
+          'content-type': 'multipart/form-data',
+          Authorization: `Token ${token}`
         }
       }, { auth }
     )

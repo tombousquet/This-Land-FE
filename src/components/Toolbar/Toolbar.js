@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 export default function Toolbar (props) {
   const [auth, setAuth] = useLocalStorage('poi_auth', null)
-
+  console.log({ auth })
   return (
     <header className='toolbar'>
       <nav className='toolbar_navigation'>
@@ -23,7 +23,7 @@ export default function Toolbar (props) {
             )}
             <div>
               {auth
-                ? <li>Logged in as {auth.username} | <Link to='/login' onClick={() => setAuth(null)}>Log out</Link> </li>
+                ? <li>Logged in as {auth} | <Link to='/login' onClick={() => setAuth(null)}>Log out</Link> </li>
                 : <li><a href='/login'>Log in to add</a></li>}
             </div>
           </ul>

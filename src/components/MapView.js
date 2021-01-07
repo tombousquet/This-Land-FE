@@ -32,6 +32,10 @@ export default function MapView () {
       })
     )
 
+    map.addControl(new mapboxgl.FullscreenControl({
+      container: mapContainerRef.current
+    }))
+
     // zoom buttons
     map.addControl(new mapboxgl.NavigationControl(), 'top-right')
 
@@ -50,7 +54,7 @@ export default function MapView () {
           offset: 25
         }
       )
-        .setLngLat([-110, 42])
+        .setLngLat([-110, 44])
         .addTo(mapRef.current)
         .setHTML(
         `<div>
@@ -141,8 +145,8 @@ export default function MapView () {
   }
 
   return (
-    <div className='ma5'>
-      <div className='map-container center ma3' ref={mapContainerRef} />
+    <div>
+      <div className='map-container' ref={mapContainerRef} />
     </div>
   )
 }

@@ -16,6 +16,7 @@ import Login from './components/Login'
 function App (props) {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
   const [auth, setAuth] = useLocalStorage('poi_auth', null)
+  const [token, setToken] = useLocalStorage('token_auth', null)
 
   return (
     <Router>
@@ -36,6 +37,8 @@ function App (props) {
             <Login
               auth={auth}
               onLogin={setAuth}
+              token={token}
+              onToken={setToken}
             />
           </Route>
           <Route exact path='/'>
@@ -45,10 +48,16 @@ function App (props) {
             <PoiDetail />
           </Route>
           <Route path='/comment/:id/add'>
-            <AddComment auth={auth} />
+            <AddComment
+              auth={auth}
+              token={token}
+            />
           </Route>
           <Route path='/add'>
-            <AddPoi auth={auth} />
+            <AddPoi
+              auth={auth}
+              token={token}
+            />
           </Route>
         </Switch>
       </div>

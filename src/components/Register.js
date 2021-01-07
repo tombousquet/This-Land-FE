@@ -5,19 +5,21 @@ import { Link, Redirect } from 'react-router-dom'
 
 export default function Register ({ auth, onRegister }) {
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
 
   function handleSubmit (event) {
     event.preventDefault()
 
-    axios.post('https://this-land-team-5.herokuapp.com/api/userpass/', {
+    axios.post('https://this-land-team-5.herokuapp.com/auth/users/', {
       username: username,
+      email: email,
       password: password
     })
       .then(response => {
         setFeedbackMsg({ type: 'success', message: 'User successfully created.' })
-        onRegister({ username, password })
+        onRegister(username, email, password)
       })
       .catch(error => {
         setFeedbackMsg({ type: 'error', message: 'This user already exists' })
@@ -25,8 +27,8 @@ export default function Register ({ auth, onRegister }) {
       })
   }
 
-  if (auth) {
-    return <Redirect to='/' />
+  if (feedbackMsg.type === 'success') {
+    return <Redirect to='/login' />
   }
 
   return (
@@ -54,6 +56,15 @@ export default function Register ({ auth, onRegister }) {
           )
 
             }
+          <label className='db b mv2 black' htmlFor='username'>Email</label>
+          <input
+            required
+            type='text'
+            placeholder='Enter Email'
+            id='email'
+            value={email}
+            onChange={event => setEmail(event.target.value)}
+          />
           <label className='db b mv2 black' htmlFor='username'>Username</label>
           <input
             required
