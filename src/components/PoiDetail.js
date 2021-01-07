@@ -61,9 +61,9 @@ export default function PoiDetail () {
       <div className='body1'>
         <div className='polaroid'> {poi.images && <img src={poi.images} alt='location' width='80%' />}
           <div className='caption'>
-            <p> {poi.location_name} love </p>
-            <p> {poi.street_address} friends{poi.city} {poi.state} {poi.zip_code} </p>
-            <p> {poi.notes} family </p>
+            <p> {poi.location_name}</p>
+            <p> {poi.street_address}{poi.city} {poi.state} {poi.zip_code} </p>
+            <p> {poi.notes} </p>
           </div>
         </div>
       </div>
