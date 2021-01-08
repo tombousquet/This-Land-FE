@@ -58,16 +58,25 @@ export default function AddPoi ({ auth, token }) {
     marker.on('result', function (event) {
       const result = event.result
       console.log({ result })
-      const location = result.text
-      const address = result.properties.address
-      console.log({ address })
+      if (result.place_type[0] === 'poi') {
+        const location = result.text
+        setLocationName(location)
+      } else {
+        const location = ''
+        setLocationName(location)
+      }
+      if (result.place_type[0] === 'poi') {
+        const address = result.properties.address
+        setStreetAddress(address)
+      } else {
+        const address = result.place_name.split(', ')[0]
+        setStreetAddress(address)
+      }
       const city = result.context[2].text
-      const state = result.context[3].short_code.split('-')[1]
-      const zip = result.context[1].text
-      setLocationName(location)
-      setStreetAddress(address)
       setCity(city)
+      const state = result.context[3].short_code.split('-')[1]
       setState(state)
+      const zip = result.context[1].text
       setZipCode(zip)
     })
 
