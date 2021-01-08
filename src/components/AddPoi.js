@@ -118,13 +118,13 @@ export default function AddPoi ({ auth, token }) {
       })
   }
 
-  // if (feedbackMsg.type === 'success') {
-  //   return (
-  //     <div>
-  //       <Redirect exact to='/' />
-  //     </div>
-  //   )
-  // }
+  if (feedbackMsg.type === 'success') {
+    return (
+      <div>
+        <Redirect exact to='/' />
+      </div>
+    )
+  }
 
   return (
     <div className='ma3'>
