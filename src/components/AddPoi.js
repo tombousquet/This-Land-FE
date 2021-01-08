@@ -10,9 +10,6 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 export default function AddPoi ({ auth, token }) {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
-  console.log({ auth })
-  console.log({ token })
-
   const mapContainerRef = useRef(null)
   const mapRef = useRef(null)
   const [locationName, setLocationName] = useState('')
@@ -60,10 +57,13 @@ export default function AddPoi ({ auth, token }) {
     // This runs when a result is selected in the map search.
     marker.on('result', function (event) {
       const result = event.result
-      let [location, address, city, stateAndZip] = result.place_name.split(', ')
-      stateAndZip = stateAndZip.split(' ')
-      const zip = stateAndZip[stateAndZip.length - 1]
-      const state = stateAndZip.slice(0, stateAndZip.length - 1).join(' ')
+      console.log({ result })
+      const location = result.text
+      const address = result.properties.address
+      console.log({ address })
+      const city = result.context[2].text
+      const state = result.context[3].short_code.split('-')[1]
+      const zip = result.context[1].text
       setLocationName(location)
       setStreetAddress(address)
       setCity(city)
