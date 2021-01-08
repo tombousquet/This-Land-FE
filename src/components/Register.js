@@ -85,8 +85,10 @@ export default function Register ({ auth, onRegister }) {
               onChange={event => setPassword(event.target.value)}
             />
           </div>
-          <div className='button'>
-            <button type='submit'>Sign Up</button>
+          <div>
+            <button className='submit' type='submit'>
+              Submit
+            </button>
           </div>
         </form>
       </div>

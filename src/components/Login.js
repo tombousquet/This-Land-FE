@@ -77,8 +77,10 @@ export default function Login ({ auth, onLogin, onToken }) {
                   onChange={event => setPassword(event.target.value)}
                 />
               </div>
-              <div className='button'>
-                <button type='submit'>Login</button>
+              <div>
+                <button className='submit' type='submit'>
+                  Submit
+                </button>
               </div>
             </form>
           </div>

@@ -60,12 +60,12 @@ export default function PoiDetail ({ token }) {
   return (
     <div>
       <div className='body1'>
-        <div className='polaroid'> {poi.images && <img src={poi.images} alt='location' width='80%' />}
+        <div className='polaroid'> {poi.images && <img src={poi.images} alt='location' width='50%' />}
           <div className='caption'>
-            <p>{poi.user}</p>
-            <p> {poi.location_name}</p>
-            <p> {poi.street_address}{poi.city} {poi.state} {poi.zip_code} </p>
-            <p> {poi.notes} </p>
+            <div className='name'> {poi.location_name} </div>
+            <div> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </div>
+            <p className='notes'> {poi.notes} </p>
+            <div> {poi.user} </div>
           </div>
         </div>
       </div>
@@ -74,10 +74,10 @@ export default function PoiDetail ({ token }) {
           <button onClick={deletePoi}>Delete this location</button>}
       </div> */}
       <div>
-        <h1> Other Peoples Memories about this Place </h1>
+        {/* <h3> Other Peoples Memories about this Place </h3> */}
         {token && (
           <div className='mh1'>
-            <button className='mh2 center' onClick={newComment}>Add your own memory or story to this place!</button>
+            <button className='submit' onClick={newComment}>Click here to add your own memory or story to this place!</button>
           </div>
         )}
         <div className='body2'>
@@ -92,6 +92,7 @@ export default function PoiDetail ({ token }) {
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </div>
