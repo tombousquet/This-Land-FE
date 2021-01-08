@@ -10,6 +10,7 @@ export default function Toolbar (props) {
   const [auth, setAuth] = useLocalStorage('poi_auth', null)
   const [token, setToken] = useLocalStorage('token_auth', null)
 
+  console.log({ feedbackMsg })
   console.log({ auth })
   console.log({ token })
 
