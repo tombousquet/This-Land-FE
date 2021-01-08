@@ -19,25 +19,30 @@
 h5 {
   margin: 0px;
   padding: 5px;
-  font-family: sans-serif;
+  font-family: Georgia;
 }
 
 .title {
   text-align: center;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: Georgia;
+}
+li {
+  color: white;
+  font-family: Georgia;
 }
 
 .comment {
   border: solid black 2px;
+  font-family: Georgia;
 }
 
 h1 {
   text-align: center;
+  font-family: Georgia;
 }
-
-li {
-  color: white;
-  list-style-type: none;
+h3 {
+  text-align: center;
+  font-family: Georgia;
 }
 
 body {
@@ -45,7 +50,7 @@ body {
 }
 .Login {
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia;
 }
 * {
   box-sizing: border-box;
@@ -73,6 +78,14 @@ body {
   padding: 16px;
   background-color: white;
 }
+.container input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
 .container1 {
   margin: auto;
   max-width: 600px;
@@ -99,6 +112,11 @@ input[type="password"] {
   background: #f1f1f1;
 }
 .container input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+input[type="text"]:focus,
 input[type="password"]:focus {
   background-color: #ddd;
   outline: none;
@@ -136,20 +154,22 @@ input[type="password"] {
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  font-family: Georgia;
 }
 
 .btn:hover {
   opacity: 1;
 }
 div.polaroid {
-  width: 100%;
+  width: 70%;
   padding: 16px;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(134, 129, 129, 0.19);
   margin-bottom: 25px;
   margin-top: 25px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: Georgia;
+  text-align: center;
 }
 div.caption {
   text-align: center;
@@ -168,13 +188,14 @@ div.polaroid1 {
 }
 div.rotate_left {
   float: left;
-  -ms-transform: rotate(-8deg);
-  -webkit-transform: rotate(-8deg);
-  transform: rotate(-8deg);
+  -ms-transform: rotate(-2deg);
+  -webkit-transform: rotate(-2deg);
+  transform: rotate(-2deg);
 }
 div.caption1 {
   text-align: center;
   padding: 10px 20px;
+  font-family: Georgia;
 }
 .body2 {
   margin: 30px;
@@ -187,4 +208,13 @@ div.caption1 {
     height: 350px;
     width: 350px;
   }
+}
+.notes {
+  text-align: left;
+}
+
+div.name {
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
 }
