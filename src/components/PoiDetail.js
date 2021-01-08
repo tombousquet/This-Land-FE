@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-export default function PoiDetail () {
+export default function PoiDetail ({ token }) {
+  console.log({ token })
   const { id } = useParams()
   const [poi, setPoi] = useState({})
   // const [deletedPoi, setDeletedPoi] = useState(false)
@@ -64,6 +65,7 @@ export default function PoiDetail () {
             <div className='name'> {poi.location_name} </div>
             <div> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </div>
             <p className='notes'> {poi.notes} </p>
+            <div> {poi.user} </div>
           </div>
         </div>
       </div>
@@ -73,9 +75,11 @@ export default function PoiDetail () {
       </div> */}
       <div>
         {/* <h3> Other Peoples Memories about this Place </h3> */}
-        <div className='mh1'>
-          <button className='submit' onClick={newComment}>Click here to add your own memory or story to this place!</button>
-        </div>
+        {token && (
+          <div className='mh1'>
+            <button className='submit' onClick={newComment}>Click here to add your own memory or story to this place!</button>
+          </div>
+        )}
         <div className='body2'>
           <div className='caption1'>
             {comments && comments.map((comments, index) => (
@@ -88,6 +92,7 @@ export default function PoiDetail () {
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </div>
