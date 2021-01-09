@@ -166,13 +166,13 @@ input[type="password"] {
   opacity: 1;
 }
 div.polaroid {
-  width: 70%;
-  padding: 16px;
+  width: 50%;
+  padding: 20px;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(134, 129, 129, 0.19);
   margin-bottom: 25px;
-  margin-top: 25px;
+  margin-top: 100px;
   font-family: Georgia;
   text-align: center;
 }
@@ -180,12 +180,12 @@ div.caption {
   text-align: center;
   padding: 10px 20px;
 }
-.body1 {
+div.body1 {
   margin: 25px;
 }
 
 div.polaroid1 {
-  width: 284px;
+  width: 250px;
   padding: 10px 10px 20px 10px;
   border: 1px solid BFBFBF;
   background-color: white;
@@ -196,6 +196,7 @@ div.rotate_left {
   -ms-transform: rotate(-2deg);
   -webkit-transform: rotate(-2deg);
   transform: rotate(-2deg);
+  margin: 10px;
 }
 div.caption1 {
   text-align: center;
@@ -216,10 +217,15 @@ div.caption1 {
 }
 .notes {
   text-align: left;
+  font-size: 15px;
 }
 
 div.name {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 800;
   text-align: center;
+}
+div.address {
+  font-size: 10px;
+  font-style: italic;
 }
