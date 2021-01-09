@@ -36,7 +36,7 @@ export default function Login ({ auth, onLogin, onToken }) {
       <div className='Title'>
         <h1 className=' f2 b black'>Welcome to Your History</h1>
         <div className='Login'>
-          <h1 className='f3 b black'>Log In or <Link to='/signup'>Sign up</Link></h1>
+          <h1 className='f3 b black'>Log In or <Link to='/signup'>Register</Link></h1>
           {
           feedbackMsg &&
           (

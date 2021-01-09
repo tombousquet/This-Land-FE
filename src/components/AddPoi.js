@@ -49,7 +49,7 @@ export default function AddPoi ({ auth, token }) {
         marker: {
           color: 'blue'
         },
-        placeholder: 'Find your location',
+        placeholder: 'Search for your location',
         mapboxgl: mapboxgl
       })
     map.addControl(marker)
