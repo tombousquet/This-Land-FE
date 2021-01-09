@@ -23,7 +23,7 @@ export default function Register ({ auth, onRegister }) {
       })
       .catch(error => {
         setFeedbackMsg({ type: 'error', message: error.response.data.errors })
-        console.log(error.response.data)
+        console.log(error.response.data.errors)
       })
   }
   if (auth) {
@@ -38,14 +38,14 @@ export default function Register ({ auth, onRegister }) {
     <div className='bg-img2'>
       <div className='Register'>
         <h1 className=' f2 b black'>Welcome to Your History</h1>
-        <h1 className='f3 b black'>Sign Up or <Link to='/login'>Log In</Link></h1>
+        <h1 className='f3 b black'>Register or <Link to='/login'>Log In</Link></h1>
         {
           feedbackMsg &&
           (
             <div className={clsx(
               'ba', 'bw1', 'pa3', 'w-50',
               {
-                'bg-black': (feedbackMsg.type === 'error'),
+                'bg-washed-red': (feedbackMsg.type === 'error'),
                 'bg-washed-yellow': (feedbackMsg.type === 'success')
               }
             )}
