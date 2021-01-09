@@ -8,7 +8,7 @@ export default function PoiDetail ({ token }) {
   const [poi, setPoi] = useState({})
   // const [deletedPoi, setDeletedPoi] = useState(false)
   const [addComment, setAddComment] = useState(false)
-  // const [deletedComment, setDeletedComment] = useState(false)
+  const [deletedComment, setDeletedComment] = useState(false)
 
   useEffect(() => {
     axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
@@ -31,18 +31,18 @@ export default function PoiDetail ({ token }) {
   //   return <Redirect to='/map' />
   // }
 
-  // function deleteComment () {
-  //   axios.delete('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
-  //     // auth: auth
-  //   })
-  //     .then(response => {
-  //       setDeletedComment(true)
-  //     })
-  // }
+  function deleteComment () {
+    axios.delete('https://this-land-team-5.herokuapp.com/tellyourstory/' + id + '/delete', {
+      // auth: auth
+    })
+      .then(response => {
+        setDeletedComment(true)
+      })
+  }
 
-  // if (deletedComment) {
-  //   return <Redirect to={'/detail/' + id} />
-  // }
+  if (deletedComment) {
+    return <Redirect to={'/detail/' + id} />
+  }
 
   function newComment () {
     setAddComment(true)
