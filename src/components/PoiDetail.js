@@ -8,7 +8,7 @@ export default function PoiDetail ({ token }) {
   const [poi, setPoi] = useState({})
   const [deletedPoi, setDeletedPoi] = useState(false)
   const [addComment, setAddComment] = useState(false)
-  const [deletedComment, setDeletedComment] = useState(false)
+  // const [deletedComment, setDeletedComment] = useState(false)
 
   useEffect(() => {
     axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
@@ -44,9 +44,9 @@ export default function PoiDetail ({ token }) {
   //     })
   // }
 
-  if (deletedComment) {
-    return <Redirect to={'/detail/' + id} />
-  }
+  // if (deletedComment) {
+  //   return <Redirect to={'/detail/' + id} />
+  // }
 
   function newComment () {
     setAddComment(true)
