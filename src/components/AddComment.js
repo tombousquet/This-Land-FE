@@ -17,7 +17,7 @@ export default function AddComment ({ auth, token }) {
     const data = new FormData()
     data.set('text', comment)
     data.set('poi', id)
-    // data.set('user', auth.user)
+    data.set('user', auth)
     const image = document.getElementById('images').files[0]
     if (image) {
       data.set('images', image)
@@ -30,7 +30,7 @@ export default function AddComment ({ auth, token }) {
           'content-type': 'multipart/form-data',
           Authorization: `Token ${token}`
         }
-      }, { auth }
+      }
     )
       .then(response => {
         setFeedbackMsg({ type: 'success', message: 'This comment was added successfully.' })
