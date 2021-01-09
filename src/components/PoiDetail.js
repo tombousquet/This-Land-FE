@@ -89,7 +89,7 @@ export default function PoiDetail ({ token }) {
               <div key={index}>
                 <div className='polaroid1 rotate_left'>
                   {comments.images && <img src={comments.images} alt='location' width='284' height='213' />}
-                  <p> {comments.username} </p>
+                  <p> {comments.user} </p>
                   <p> {comments.text} </p>
                 </div>
               </div>
