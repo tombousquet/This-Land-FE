@@ -16,9 +16,7 @@ export default function Toolbar (props) {
 
   function logout () {
     axios.post('https://this-land-team-5.herokuapp.com/auth/token/logout',
-      {
-
-      },
+      {},
       {
         headers: {
           Authorization: `Token ${token}`
