@@ -46,13 +46,12 @@ export default function Toolbar (props) {
         <div className='spacer' />
         <div className='toolbar_navigation-items'>
           <ul>
-            <li><a href='/'>Map</a></li>
             {auth && (
               <li><a href='/add'>Add a Point of Interest</a></li>
             )}
             <div>
               {auth
-                ? <li>Logged in as {auth} | <Link to='/login' onClick={() => logout()}>Log out</Link> </li>
+                ? <li>{auth} | <Link to='/login' onClick={() => logout()}>Log out</Link> </li>
                 : <li><a href='/login'>Log in to add</a></li>}
             </div>
           </ul>

@@ -90,11 +90,11 @@ export default function AddComment ({ auth, token }) {
                 Image
               </label>
               <input
-                className='mh3'
                 type='file'
                 id='images'
                 placeholder='Choose your image to add'
               />
+              <button type='reset'>Clear image</button>
             </div>
             <button className='submit' type='submit'>Submit</button>
           </div>
