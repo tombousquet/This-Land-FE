@@ -62,12 +62,12 @@ export default function PoiDetail ({ token }) {
   }
 
   return (
-    <div>
+    <div className='Poi'>
       <div className='body1'>
-        <div className='polaroid'> {poi.images && <img src={poi.images} alt='location' width='50%' />}
+        <div className='polaroid center '> {poi.images && <img src={poi.images} alt='location' width='70%' />}
           <div className='caption'>
             <div className='name'> {poi.location_name} </div>
-            <div> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </div>
+            <div className='address'> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </div>
             <p className='notes'> {poi.notes} </p>
             <div> {poi.user} </div>
           </div>
@@ -88,7 +88,7 @@ export default function PoiDetail ({ token }) {
             {comments && comments.map((comments, index) => (
               <div key={index}>
                 <div className='polaroid1 rotate_left'>
-                  {comments.images && <img src={comments.images} alt='location' width='284' height='213' />}
+                  {comments.images && <img src={comments.images} alt='location' width='250' height='180' />}
                   <p> {comments.username} </p>
                   <p> {comments.text} </p>
                 </div>

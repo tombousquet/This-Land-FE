@@ -26,36 +26,38 @@ export default function Register ({ auth, onRegister }) {
         console.log('here is the error message', Object.values(error.response.data)[0])
       })
   }
-
-  if (feedbackMsg.type === 'success') {
-    return <Redirect to='/login' />
+  if (auth) {
+    return <Redirect to='/' />
   }
+
+  // if (feedbackMsg.type === 'success') {
+  //   return <Redirect to='/' />
+  // }
 
   return (
     <div className='bg-img2'>
       <div className='Register'>
-        <h1 className='f2 b black'>Sign Up or <Link to='/login'>Log In</Link></h1>
-
-        <form
-          onSubmit={handleSubmit}
-          className='container'
-        >
-          {
+        <h1 className=' f2 b black'>Welcome to Your History</h1>
+        <h1 className='f3 b black'>Register or <Link to='/login'>Log In</Link></h1>
+        {
           feedbackMsg &&
           (
             <div className={clsx(
               'ba', 'bw1', 'pa3', 'w-50',
               {
-                'bg-white': (feedbackMsg.type === 'error'),
-                'bg-washed-red': (feedbackMsg.type === 'success')
+                'bg-washed-red': (feedbackMsg.type === 'error'),
+                'bg-washed-yellow': (feedbackMsg.type === 'success')
               }
             )}
             >
               {feedbackMsg.message}
             </div>
           )
-
-            }
+      }
+        <form
+          onSubmit={handleSubmit}
+          className='container'
+        >
           <label className='db b mv2 black' htmlFor='username'>Email</label>
           <input
             required
@@ -93,6 +95,5 @@ export default function Register ({ auth, onRegister }) {
         </form>
       </div>
     </div>
-
   )
 }
