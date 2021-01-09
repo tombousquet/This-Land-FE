@@ -6,7 +6,7 @@ export default function PoiDetail ({ token }) {
   console.log({ token })
   const { id } = useParams()
   const [poi, setPoi] = useState({})
-  // const [deletedPoi, setDeletedPoi] = useState(false)
+  const [deletedPoi, setDeletedPoi] = useState(false)
   const [addComment, setAddComment] = useState(false)
   // const [deletedComment, setDeletedComment] = useState(false)
 
@@ -18,21 +18,25 @@ export default function PoiDetail ({ token }) {
       })
   }, [id])
 
-  // function deletePoi () {
-  //   axios.delete('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
-  //     // auth: auth
-  //   })
-  //     .then(response => {
-  //       setDeletedPoi(true)
-  //     })
-  // }
+  function deletePoi () {
+    axios.delete('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id + '/delete',
+      {},
+      {
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+      .then(response => {
+        setDeletedPoi(true)
+      })
+  }
 
-  // if (deletedPoi) {
-  //   return <Redirect to='/map' />
-  // }
+  if (deletedPoi) {
+    return <Redirect to='/' />
+  }
 
   // function deleteComment () {
-  //   axios.delete('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id, {
+  //   axios.delete('https://this-land-team-5.herokuapp.com/api/tellyourstory/' + id + '/delete', {
   //     // auth: auth
   //   })
   //     .then(response => {
@@ -69,12 +73,11 @@ export default function PoiDetail ({ token }) {
           </div>
         </div>
       </div>
-      {/* <div>
-        {auth === poi.user &&
-          <button onClick={deletePoi}>Delete this location</button>}
-      </div> */}
       <div>
-        {/* <h3> Other Peoples Memories about this Place </h3> */}
+        {/* {auth === poi.user && */}
+        <button onClick={deletePoi}>Delete this location</button>
+      </div>
+      <div>
         {token && (
           <div className='mh1'>
             <button className='submit' onClick={newComment}>Click here to add your own memory or story to this place!</button>
