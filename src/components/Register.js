@@ -22,8 +22,8 @@ export default function Register ({ auth, onRegister }) {
         onRegister(username, email, password)
       })
       .catch(error => {
-        setFeedbackMsg({ type: 'error', message: error.response.data.errors })
-        console.log(error.response.data.errors)
+        setFeedbackMsg({ type: 'error', message: Object.values(error.response.data)[0] })
+        console.log('here is the error message', Object.values(error.response.data)[0])
       })
   }
   if (auth) {

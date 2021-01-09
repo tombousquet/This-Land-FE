@@ -45,7 +45,7 @@ export default function SideDrawer (props) {
         )}
         <div>
           {auth
-            ? <li>Logged in as {auth} | <Link to='/login' onClick={() => logout()}>Log out</Link> </li>
+            ? <li>{auth} | <Link to='/login' onClick={() => logout()}>Log out</Link> </li>
             : <li><a href='/login'>Log in to add</a></li>}
         </div>
       </ul>
