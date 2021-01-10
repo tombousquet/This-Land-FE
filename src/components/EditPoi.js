@@ -6,7 +6,7 @@ import mapboxgl from 'mapbox-gl'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
-export default function EditPoi ({auth, token}) {
+export default function EditPoi ({ auth, token }) {
   const [poi, setPoi] = useState({})
   const { id } = useParams()
   const mapContainerRef = useRef(null)
@@ -88,10 +88,12 @@ export default function EditPoi ({auth, token}) {
 
   useEffect(() => {
     axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
-    .then(response => {
-      setPoi(response.data)
-    })
+      .then(response => {
+        setPoi(response.data)
+      })
   }, [id])
+
+  console.log({ poi })
 
   function handleEdit (event) {
     event.preventDefault()
@@ -139,7 +141,158 @@ export default function EditPoi ({auth, token}) {
     return <Redirect to={'/detail/' + id} />
   }
 
-  return(
+  if (!auth) {
+    return <Redirect to='/' />
+  }
 
+  return (
+    <div className='ma3'>
+      <div>
+        {feedbackMsg && (
+          <div
+            className={clsx({
+              'bg-red': feedbackMsg.type === 'error',
+              white: feedbackMsg.type === 'error',
+              'bg-green': feedbackMsg.type === 'success'
+            })}
+          >
+            {feedbackMsg.message}
+          </div>
+        )}
+        <pre id='coordinates' className='coordinates' />
+        <div
+          className='center mapAdd'
+          ref={mapContainerRef}
+        />
+        <div className='form'>
+          <form
+            onSubmit={handleEdit}
+            className='container1'
+          >
+            <div>
+              <div className='mh2 mv3'>
+                <label className='mv2  mh2 b' htmlFor='title'>
+                  Location Name
+                </label>
+                <input
+                  className='mh1'
+                  required
+                  type='text'
+                  id='locationName'
+                  value={poi.location_name}
+                  onChange={(event) => setLocationName(event.target.value)}
+                  placeholder='Name of Location'
+                />
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='street address'>
+                  Street Address
+                </label>
+                <input
+                  className='mh1'
+                  required
+                  type='text'
+                  id='streetAddress'
+                  value={poi.street_address}
+                  onChange={(event) => setStreetAddress(event.target.value)}
+                  placeholder='Street Address'
+                />
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='city'>
+                  City
+                </label>
+                <input
+                  className='mh1'
+                  required
+                  type='text'
+                  id='city'
+                  value={poi.city}
+                  onChange={(event) => setCity(event.target.value)}
+                  placeholder='City'
+                />
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='state'>
+                  State
+                </label>
+                <input
+                  className='mh1'
+                  required
+                  type='text'
+                  id='state'
+                  value={poi.state}
+                  onChange={(event) => setState(event.target.value)}
+                  placeholder='State'
+                />
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='zipCode'>
+                  Zip Code
+                </label>
+                <input
+                  className='mh1'
+                  required
+                  type='text'
+                  id='zipCode'
+                  value={poi.zip_code}
+                  onChange={(event) => setZipCode(event.target.value)}
+                  placeholder='zipCode'
+                />
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='status'>
+                  Notes
+                </label>
+                <input
+                  className='mh3'
+                  required
+                  type='text'
+                  id='status'
+                  value={poi.notes}
+                  onChange={(event) => setNotes(event.target.value)}
+                  placeholder='Add your notes here...'
+                />
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='status'>
+                  Image
+                </label>
+                <input
+                  className='mh3'
+                  type='file'
+                  id='images'
+                  placeholder='Choose your image to add'
+                />
+                <button type='reset'>Clear image</button>
+              </div>
+              <div className='mh2 mv3'>
+                <label className='mv2 b mh2' htmlFor='status'>
+                  Category
+                </label>
+                <select
+                  className='mh3'
+                  required
+                  id='category'
+                  value={poi.category}
+                  onChange={(event) => setCategory(event.target.value)}
+                >
+                  <option value='null'>Choose from below</option>
+                  <option value='business'>Business</option>
+                  <option value='church'>Church</option>
+                  <option value='house'>House</option>
+                  <option value='lot'>Lot</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <button className='submit' type='submit'>
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   )
 }
