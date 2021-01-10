@@ -48,6 +48,7 @@ function App (props) {
           <Route path='/detail/:id'>
             <PoiDetail
               token={token}
+              auth={auth}
             />
           </Route>
           <Route path='/comment/:id/add'>
