@@ -37,13 +37,20 @@ export default function Login ({ auth, onLogin, onToken }) {
         <h1 className=' f2 b black'>Welcome to Your History</h1>
         <div className='Login'>
           <h1 className='f3 b black'>Log In or <Link to='/signup'>Register</Link></h1>
-          {
+
+          <div>
+            <form
+              onSubmit={handleSubmit}
+              className='container'
+            >
+              {
           feedbackMsg &&
           (
             <div className={clsx(
-              'ba', 'bw1', 'pa3', 'w-50',
+              'ba bw2', 'pa3', 'w-100',
               {
-                'bg-white': (feedbackMsg.type === 'error'),
+                'light-gray': (feedbackMsg.type === 'error'),
+                'bg-red': (feedbackMsg.type === 'error'),
                 'bg-washed-red': (feedbackMsg.type === 'success')
               }
             )}
@@ -52,11 +59,6 @@ export default function Login ({ auth, onLogin, onToken }) {
             </div>
           )
       }
-          <div>
-            <form
-              onSubmit={handleSubmit}
-              className='container'
-            >
               <label className='db b mv2 black mid-v' htmlFor='username'>Username</label>
               <input
                 required
