@@ -7,6 +7,7 @@ export default function PoiDetail ({ token, auth }) {
   const { id } = useParams()
   const [poi, setPoi] = useState({})
   const [deletedPoi, setDeletedPoi] = useState(false)
+  const [editPoi, setEditPoi] = useState(false)
   const [addComment, setAddComment] = useState(false)
   const [commentList, setCommentList] = useState([])
 
@@ -37,6 +38,14 @@ export default function PoiDetail ({ token, auth }) {
 
   if (deletedPoi) {
     return <Redirect to='/' />
+  }
+
+  function editPoiFunction () {
+    setEditPoi(true)
+  }
+
+  if (editPoi) {
+    return <Redirect to={'/edit/' + id} />
   }
 
   function deleteComment (commentToDelete) {
@@ -77,6 +86,7 @@ export default function PoiDetail ({ token, auth }) {
       <div>
         {/* {auth === poi.user && */}
         <button onClick={deletePoi}>Delete this location</button>
+        <button onClick={editPoiFunction}>Edit this location</button>
       </div>
       <div>
         {token && (
