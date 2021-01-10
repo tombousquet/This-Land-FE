@@ -57,6 +57,10 @@ body {
   height: 100%;
   font-family: Georgia;
 }
+.Register {
+  height: 100%;
+  font-family: Georgia;
+}
 * {
   box-sizing: border-box;
 }
