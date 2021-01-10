@@ -30,23 +30,24 @@ export default function Register ({ auth, onRegister }) {
     return <Redirect to='/' />
   }
 
-  // if (feedbackMsg.type === 'success') {
-  //   return <Redirect to='/' />
-  // }
-
   return (
     <div className='bg-img2'>
       <div className='Register'>
         <h1 className=' f2 b black'>Welcome to Your History</h1>
         <h1 className='f3 b black'>Register or <Link to='/login'>Log In</Link></h1>
-        {
+
+        <form
+          onSubmit={handleSubmit}
+          className='container'
+        >{
           feedbackMsg &&
           (
             <div className={clsx(
-              'ba', 'bw1', 'pa3', 'w-50',
+              'ba bw2', 'pa3', 'w-100',
               {
-                'bg-washed-red': (feedbackMsg.type === 'error'),
-                'bg-washed-yellow': (feedbackMsg.type === 'success')
+                'light-gray': (feedbackMsg.type === 'error'),
+                'bg-red': (feedbackMsg.type === 'error'),
+                'bg-washed-red': (feedbackMsg.type === 'success')
               }
             )}
             >
@@ -54,10 +55,6 @@ export default function Register ({ auth, onRegister }) {
             </div>
           )
       }
-        <form
-          onSubmit={handleSubmit}
-          className='container'
-        >
           <label className='db b mv2 black' htmlFor='username'>Email</label>
           <input
             required
