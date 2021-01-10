@@ -2,19 +2,23 @@ import { useEffect, useState } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-export default function PoiDetail ({ token }) {
+export default function PoiDetail ({ token, auth }) {
   console.log({ token })
   const { id } = useParams()
   const [poi, setPoi] = useState({})
   const [deletedPoi, setDeletedPoi] = useState(false)
   const [addComment, setAddComment] = useState(false)
-  // const [deletedComment, setDeletedComment] = useState(false)
+  const [commentList, setCommentList] = useState([])
+
+  console.log(commentList)
 
   useEffect(() => {
     axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
       .then(response => {
         setPoi(response.data)
         console.log(response.data)
+        setCommentList(response.data.TellYourStories)
+        console.log(response.data.TellYourStories)
       })
   }, [id])
 
@@ -35,27 +39,24 @@ export default function PoiDetail ({ token }) {
     return <Redirect to='/' />
   }
 
-  // function deleteComment () {
-  //   axios.delete('https://this-land-team-5.herokuapp.com/api/tellyourstory/' + id + '/delete', {
-  //     // auth: auth
-  //   })
-  //     .then(response => {
-  //       setDeletedComment(true)
-  //     })
-  // }
-
-  // if (deletedComment) {
-  //   return <Redirect to={'/detail/' + id} />
-  // }
+  function deleteComment (commentToDelete) {
+    axios.delete('https://this-land-team-5.herokuapp.com/api/tellyourstory/' + commentToDelete.id + '/delete',
+      {},
+      {
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+      .then(response => {
+        setCommentList(commentList.filter(currentComment => (
+          currentComment.id !== commentToDelete.id)
+        ))
+      })
+  }
 
   function newComment () {
     setAddComment(true)
   }
-
-  console.log(poi)
-
-  const comments = poi.TellYourStories
-  console.log({ comments })
 
   if (addComment) {
     return <Redirect to={'/comment/' + id + '/add'} />
@@ -85,12 +86,14 @@ export default function PoiDetail ({ token }) {
         )}
         <div className='body2'>
           <div className='caption1'>
-            {comments && comments.map((comments, index) => (
+            {commentList && commentList.map((comment, index) => (
               <div key={index}>
                 <div className='polaroid1 rotate_left'>
-                  {comments.images && <img src={comments.images} alt='location' width='250' height='180' />}
-                  <p> {comments.username} </p>
-                  <p> {comments.text} </p>
+                  {comment.images && <img src={comment.images} alt='location' width='284' height='213' />}
+                  <p> {comment.user} </p>
+                  <p> {comment.text} </p>
+                  {/* {auth === comment.user && */}
+                  <button onClick={() => deleteComment(comment)}>Delete this memory</button>
                 </div>
               </div>
             ))}
