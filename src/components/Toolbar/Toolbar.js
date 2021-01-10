@@ -1,14 +1,11 @@
 import { useState } from 'react'
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton'
 import './Toolbar.css'
-import { useLocalStorage } from '../../Hooks'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-export default function Toolbar (props) {
+export default function Toolbar ({ auth, token, setAuth, setToken, handleDrawerClick }) {
   const [feedbackMsg, setFeedbackMsg] = useState('')
-  const [auth, setAuth] = useLocalStorage('poi_auth', null)
-  const [token, setToken] = useLocalStorage('token_auth', null)
 
   console.log({ feedbackMsg })
   console.log({ auth })
@@ -38,7 +35,7 @@ export default function Toolbar (props) {
     <header className='toolbar'>
       <nav className='toolbar_navigation'>
         <div className='toolbar_toggle-button'>
-          <DrawerToggleButton onClick={props.handleDrawerClick} />
+          <DrawerToggleButton onClick={handleDrawerClick} />
         </div>
         <div className='toolbar_logo'><a href='/'>THIS LAND</a></div>
         <div className='spacer' />

@@ -1,13 +1,10 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { useLocalStorage } from '../../Hooks'
 import { Link } from 'react-router-dom'
 import './SideDrawer.css'
 
-export default function SideDrawer (props) {
+export default function SideDrawer ({ auth, token, setAuth, setToken }) {
   const [feedbackMsg, setFeedbackMsg] = useState('')
-  const [auth, setAuth] = useLocalStorage('poi_auth', null)
-  const [token, setToken] = useLocalStorage('token_auth', null)
 
   console.log({ feedbackMsg })
   console.log({ auth })
