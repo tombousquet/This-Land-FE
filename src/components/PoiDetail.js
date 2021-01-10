@@ -8,13 +8,17 @@ export default function PoiDetail ({ token, auth }) {
   const [poi, setPoi] = useState({})
   const [deletedPoi, setDeletedPoi] = useState(false)
   const [addComment, setAddComment] = useState(false)
-  const [deletedComment, setDeletedComment] = useState(false)
+  const [commentList, setCommentList] = useState([])
+
+  console.log(commentList)
 
   useEffect(() => {
     axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
       .then(response => {
         setPoi(response.data)
         console.log(response.data)
+        setCommentList(response.data.TellYourStories)
+        console.log(response.data.TellYourStories)
       })
   }, [id])
 
@@ -35,8 +39,8 @@ export default function PoiDetail ({ token, auth }) {
     return <Redirect to='/' />
   }
 
-  function deleteComment () {
-    axios.delete('https://this-land-team-5.herokuapp.com/api/tellyourstory/' + id + '/delete',
+  function deleteComment (commentToDelete) {
+    axios.delete('https://this-land-team-5.herokuapp.com/api/tellyourstory/' + commentToDelete.id + '/delete',
       {},
       {
         headers: {
@@ -44,24 +48,15 @@ export default function PoiDetail ({ token, auth }) {
         }
       })
       .then(response => {
-        setDeletedComment(true)
+        setCommentList(commentList.filter(currentComment => (
+          currentComment.id !== commentToDelete.id)
+        ))
       })
-  }
-
-  if (deletedComment) {
-    return <Redirect to={'/detail/' + id} />
   }
 
   function newComment () {
     setAddComment(true)
   }
-
-  console.log(poi)
-
-  const comments = poi.TellYourStories
-  console.log({ comments })
-
-  console.log({ auth })
 
   if (addComment) {
     return <Redirect to={'/comment/' + id + '/add'} />
@@ -91,15 +86,14 @@ export default function PoiDetail ({ token, auth }) {
         )}
         <div className='body2'>
           <div className='caption1'>
-            {comments && comments.map((comments, index) => (
+            {commentList && commentList.map((comment, index) => (
               <div key={index}>
                 <div className='polaroid1 rotate_left'>
-                  {comments.images && <img src={comments.images} alt='location' width='284' height='213' />}
-                  <p> {comments.user} </p>
-                  <p> {comments.text} </p>
-                  <p>{comments.id}</p>
-                  {/* {auth === comments.user && */}
-                  <button onClick={deleteComment}>Delete this memory</button>
+                  {comment.images && <img src={comment.images} alt='location' width='284' height='213' />}
+                  <p> {comment.user} </p>
+                  <p> {comment.text} </p>
+                  {/* {auth === comment.user && */}
+                  <button onClick={() => deleteComment(comment)}>Delete this memory</button>
                 </div>
               </div>
             ))}
