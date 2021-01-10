@@ -24,9 +24,12 @@ function App (props) {
       <div style={{ height: '100%' }}>
         <Toolbar
           handleDrawerClick={() => setSideDrawerOpen(!sideDrawerOpen)}
+          auth={auth}
+          setAuth={setAuth}
           token={token}
+          setToken={setToken}
         />
-        {sideDrawerOpen && <><SideDrawer token={token} /> <Backdrop onClick={() => setSideDrawerOpen(false)} /></>}
+        {sideDrawerOpen && <><SideDrawer auth={auth} setAuth={setAuth} token={token} setToken={setToken} /> <Backdrop onClick={() => setSideDrawerOpen(false)} /></>}
         <main style={{ marginTop: '80px' }} />
         <Switch>
           <Route path='/signup'>
