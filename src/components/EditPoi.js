@@ -93,8 +93,6 @@ export default function EditPoi ({ auth, token }) {
       })
   }, [id])
 
-  console.log({ poi })
-
   function handleEdit (event) {
     event.preventDefault()
 
@@ -115,7 +113,7 @@ export default function EditPoi ({ auth, token }) {
 
     axios
       .put(
-        'https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id,
+        'https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id + '/update',
         data,
         {
           headers: {
@@ -127,7 +125,7 @@ export default function EditPoi ({ auth, token }) {
       .then((response) => {
         setFeedbackMsg({
           type: 'success',
-          message: 'Point of Interest was successfully added!'
+          message: 'Point of Interest updated!'
         })
         console.log(response)
       })
@@ -148,23 +146,25 @@ export default function EditPoi ({ auth, token }) {
   return (
     <div className='ma3'>
       <div>
-        {feedbackMsg && (
-          <div
-            className={clsx({
-              'bg-red': feedbackMsg.type === 'error',
-              white: feedbackMsg.type === 'error',
-              'bg-green': feedbackMsg.type === 'success'
-            })}
-          >
-            {feedbackMsg.message}
-          </div>
-        )}
         <pre id='coordinates' className='coordinates' />
         <div
           className='center mapAdd'
           ref={mapContainerRef}
         />
         <div className='form'>
+          {feedbackMsg && (
+            <div className={clsx(
+              'ba bw2', 'pa3', 'w-100',
+              {
+                'light-gray': (feedbackMsg.type === 'error'),
+                'bg-red': (feedbackMsg.type === 'error'),
+                'bg-washed-red': (feedbackMsg.type === 'success')
+              }
+            )}
+            >
+              {feedbackMsg.message}
+            </div>
+          )}
           <form
             onSubmit={handleEdit}
             className='container1'
