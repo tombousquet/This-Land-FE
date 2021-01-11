@@ -1,90 +1,20 @@
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import clsx from 'clsx'
-import mapboxgl from 'mapbox-gl'
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 export default function EditPoi ({ auth, token }) {
   const [poi, setPoi] = useState({})
   const { id } = useParams()
-  const mapContainerRef = useRef(null)
-  const mapRef = useRef(null)
-  const [locationName, setLocationName] = useState('')
-  const [streetAddress, setStreetAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [state, setState] = useState('')
-  const [zipCode, setZipCode] = useState('')
-  const [notes, setNotes] = useState('')
-  const [category, setCategory] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
 
-  mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
-
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: 'mapbox://styles/tombousquet/ckjep6fok7uyw1ao069ohe6wg',
-      // centered on durham
-      center: [-96, 35],
-      zoom: 2
+  const setPoiField = (field, value) => {
+    setPoi({
+      ...poi,
+      [field]: value
     })
-
-    // zoom buttons
-    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right')
-
-    map.addControl(
-      new mapboxgl.GeolocateControl({
-        positionOptions: {
-          enableHighAccuracy: true
-        },
-        trackUserLocation: true
-      }), 'top-left'
-    )
-    // search and locate by address, name
-
-    const marker = new MapboxGeocoder(
-      {
-        accessToken: mapboxgl.accessToken,
-        marker: {
-          color: 'blue'
-        },
-        placeholder: 'Search for your location',
-        mapboxgl: mapboxgl
-      })
-    map.addControl(marker)
-
-    // This runs when a result is selected in the map search.
-    marker.on('result', function (event) {
-      const result = event.result
-      console.log({ result })
-      if (result.place_type[0] === 'poi') {
-        const location = result.text
-        setLocationName(location)
-      } else {
-        const location = ''
-        setLocationName(location)
-      }
-      if (result.place_type[0] === 'poi') {
-        const address = result.properties.address
-        setStreetAddress(address)
-      } else {
-        const address = result.place_name.split(', ')[0]
-        setStreetAddress(address)
-      }
-      const city = result.context[2].text
-      setCity(city)
-      const state = result.context[3].short_code.split('-')[1]
-      setState(state)
-      const zip = result.context[1].text
-      setZipCode(zip)
-    })
-
-    mapRef.current = map
-
-    return () => map.remove()
-  }, [])
+  }
 
   useEffect(() => {
     axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
@@ -97,13 +27,13 @@ export default function EditPoi ({ auth, token }) {
     event.preventDefault()
 
     const data = new FormData()
-    data.set('location_name', locationName)
-    data.set('street_address', streetAddress)
-    data.set('city', city)
-    data.set('state', state)
-    data.set('notes', notes)
-    data.set('zip_code', zipCode)
-    data.set('category', category)
+    data.set('location_name', poi.location_name)
+    data.set('street_address', poi.street_address)
+    data.set('city', poi.city)
+    data.set('state', poi.state)
+    data.set('notes', poi.notes)
+    data.set('zip_code', poi.zip_code)
+    data.set('category', poi.category)
     data.set('user', auth)
 
     const image = document.getElementById('images').files[0]
@@ -113,7 +43,7 @@ export default function EditPoi ({ auth, token }) {
 
     axios
       .put(
-        'https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id + '/update',
+        'https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id + '/',
         data,
         {
           headers: {
@@ -147,10 +77,6 @@ export default function EditPoi ({ auth, token }) {
     <div className='ma3'>
       <div>
         <pre id='coordinates' className='coordinates' />
-        <div
-          className='center mapAdd'
-          ref={mapContainerRef}
-        />
         <div className='form'>
           {feedbackMsg && (
             <div className={clsx(
@@ -180,7 +106,7 @@ export default function EditPoi ({ auth, token }) {
                   type='text'
                   id='locationName'
                   value={poi.location_name}
-                  onChange={(event) => setLocationName(event.target.value)}
+                  onChange={(event) => setPoiField('location_name', event.target.value)}
                   placeholder='Name of Location'
                 />
               </div>
@@ -194,7 +120,7 @@ export default function EditPoi ({ auth, token }) {
                   type='text'
                   id='streetAddress'
                   value={poi.street_address}
-                  onChange={(event) => setStreetAddress(event.target.value)}
+                  onChange={(event) => setPoiField('street_address', event.target.value)}
                   placeholder='Street Address'
                 />
               </div>
@@ -208,7 +134,7 @@ export default function EditPoi ({ auth, token }) {
                   type='text'
                   id='city'
                   value={poi.city}
-                  onChange={(event) => setCity(event.target.value)}
+                  onChange={(event) => setPoiField('city', event.target.value)}
                   placeholder='City'
                 />
               </div>
@@ -222,7 +148,7 @@ export default function EditPoi ({ auth, token }) {
                   type='text'
                   id='state'
                   value={poi.state}
-                  onChange={(event) => setState(event.target.value)}
+                  onChange={(event) => setPoiField('state', event.target.value)}
                   placeholder='State'
                 />
               </div>
@@ -236,7 +162,7 @@ export default function EditPoi ({ auth, token }) {
                   type='text'
                   id='zipCode'
                   value={poi.zip_code}
-                  onChange={(event) => setZipCode(event.target.value)}
+                  onChange={(event) => setPoiField('zip_code', event.target.value)}
                   placeholder='zipCode'
                 />
               </div>
@@ -250,7 +176,7 @@ export default function EditPoi ({ auth, token }) {
                   type='text'
                   id='status'
                   value={poi.notes}
-                  onChange={(event) => setNotes(event.target.value)}
+                  onChange={(event) => setPoiField('notes', event.target.value)}
                   placeholder='Add your notes here...'
                 />
               </div>
@@ -275,7 +201,7 @@ export default function EditPoi ({ auth, token }) {
                   required
                   id='category'
                   value={poi.category}
-                  onChange={(event) => setCategory(event.target.value)}
+                  onChange={(event) => setPoiField('category', event.target.value)}
                 >
                   <option value='null'>Choose from below</option>
                   <option value='business'>Business</option>

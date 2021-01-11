@@ -3,11 +3,12 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-export default function Register ({ auth, onRegister }) {
+export default function Register ({ auth, onRegister, onToken }) {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
+  const [registered, setRegistered] = useState(false)
 
   function handleSubmit (event) {
     event.preventDefault()
@@ -21,12 +22,29 @@ export default function Register ({ auth, onRegister }) {
         setFeedbackMsg({ type: 'success', message: 'User successfully created.' })
         onRegister(username, email, password)
       })
+      .then(() => {
+        axios.post('https://this-land-team-5.herokuapp.com/auth/token/login', {
+          username: username,
+          password: password
+        })
+          .then(response => {
+            setFeedbackMsg({ type: 'success', message: 'Logged in.' })
+            onToken(response.data.auth_token)
+            setRegistered(true)
+            console.log(response.data.auth_token)
+          })
+          .catch(error => {
+            setFeedbackMsg({ type: 'error', message: 'The username or password is invalid' })
+            console.log(error)
+          })
+      })
       .catch(error => {
         setFeedbackMsg({ type: 'error', message: Object.values(error.response.data)[0] })
         console.log('here is the error message', Object.values(error.response.data)[0])
       })
   }
-  if (auth) {
+
+  if (registered) {
     return <Redirect to='/' />
   }
 
@@ -47,7 +65,7 @@ export default function Register ({ auth, onRegister }) {
               {
                 'light-gray': (feedbackMsg.type === 'error'),
                 'bg-red': (feedbackMsg.type === 'error'),
-                'bg-washed-red': (feedbackMsg.type === 'success')
+                'bg-washed-green': (feedbackMsg.type === 'success')
               }
             )}
             >

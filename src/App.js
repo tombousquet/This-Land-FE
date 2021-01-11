@@ -36,6 +36,7 @@ function App (props) {
           <Route path='/signup'>
             <Register
               auth={auth}
+              onToken={setToken}
               onRegister={setAuth}
             />
           </Route>
@@ -50,13 +51,11 @@ function App (props) {
           <Route exact path='/'>
             <MapView />
           </Route>
-          <Route>
-            <Route path='/edit/:id'>
-              <EditPoi
-                auth={auth}
-                token={token}
-              />
-            </Route>
+          <Route path='/edit/:id'>
+            <EditPoi
+              auth={auth}
+              token={token}
+            />
           </Route>
           <Route path='/detail/:id'>
             <PoiDetail
@@ -64,13 +63,13 @@ function App (props) {
               auth={auth}
             />
           </Route>
-          <Route path='/comment/:id/add'>
+          <Route path='add/comment/:id/'>
             <AddComment
               auth={auth}
               token={token}
             />
           </Route>
-          <Route path='/comment/:id/edit'>
+          <Route path='edit/comment/:id/'>
             <EditComment
               auth={auth}
               token={token}
