@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Redirect, Link, useParams } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export default function PoiDetail ({ token, auth }) {
@@ -52,7 +52,7 @@ export default function PoiDetail ({ token, auth }) {
     setEditComment(true)
   }
   if (editComment) {
-    return <Redirect to='/comment/ + id /edit' />
+    return <Redirect to={'/comment/' + id + '/edit'} />
   }
 
   function deleteComment (commentToDelete) {
