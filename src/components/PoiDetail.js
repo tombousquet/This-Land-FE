@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Redirect, useParams } from 'react-router-dom'
+import { Redirect, Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export default function PoiDetail ({ token, auth }) {
@@ -8,6 +8,7 @@ export default function PoiDetail ({ token, auth }) {
   const [poi, setPoi] = useState({})
   const [deletedPoi, setDeletedPoi] = useState(false)
   const [editPoi, setEditPoi] = useState(false)
+  const [editComment, setEditComment] = useState(false)
   const [addComment, setAddComment] = useState(false)
   const [commentList, setCommentList] = useState([])
 
@@ -46,6 +47,12 @@ export default function PoiDetail ({ token, auth }) {
 
   if (editPoi) {
     return <Redirect to={'/edit/' + id} />
+  }
+  function editCommentFunction () {
+    setEditComment(true)
+  }
+  if (editComment) {
+    return <Redirect to='/comment/ + id /edit' />
   }
 
   function deleteComment (commentToDelete) {
@@ -104,6 +111,7 @@ export default function PoiDetail ({ token, auth }) {
                   <p> {comment.text} </p>
                   {/* {auth === comment.user && */}
                   <button onClick={() => deleteComment(comment)}>Delete this memory</button>
+                  <p><button onClick={editCommentFunction}>Edit this location</button></p>
                 </div>
               </div>
             ))}

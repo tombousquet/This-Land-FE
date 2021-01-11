@@ -2,6 +2,7 @@ import MapView from './components/MapView'
 import PoiDetail from './components/PoiDetail'
 import AddPoi from './components/AddPoi'
 import EditPoi from './components/EditPoi'
+import EditComment from './components/Edit.Comment'
 import AddComment from './components/AddComment'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useLocalStorage } from './Hooks'
@@ -61,8 +62,8 @@ function App (props) {
               token={token}
             />
           </Route>
-          <Route path='/edit/:id/'>
-            <EditPoi
+          <Route path='/comment/:id/edit'>
+            <EditComment
               auth={auth}
               token={token}
             />
