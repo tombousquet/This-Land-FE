@@ -11,7 +11,7 @@ export default function PoiDetail ({ token, auth }) {
   const [editComment, setEditComment] = useState(false)
   const [addComment, setAddComment] = useState(false)
   const [commentList, setCommentList] = useState([])
-
+  const [commentId, setCommentId] = useState('')
   console.log(commentList)
 
   useEffect(() => {
@@ -48,11 +48,12 @@ export default function PoiDetail ({ token, auth }) {
   if (editPoi) {
     return <Redirect to={'/edit/' + id} />
   }
-  function editCommentFunction () {
+  function editCommentFunction (commentToEdit) {
     setEditComment(true)
+    setCommentId(commentToEdit.id)
   }
   if (editComment) {
-    return <Redirect to={'/edit/comment/' + id} />
+    return <Redirect to={'/edit/comment/' + commentId} />
   }
 
   function deleteComment (commentToDelete) {
@@ -111,7 +112,7 @@ export default function PoiDetail ({ token, auth }) {
                   <p> {comment.text} </p>
                   {/* {auth === comment.user && */}
                   <button onClick={() => deleteComment(comment)}>Delete this memory</button>
-                  <p><button onClick={editCommentFunction}>Edit this memory</button></p>
+                  <p><button onClick={() => editCommentFunction(comment)}>Edit this memory</button></p>
                 </div>
               </div>
             ))}

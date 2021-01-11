@@ -160,8 +160,8 @@ export default function AddPoi ({ auth, token }) {
             className='container1'
           >
             <div>
-              <div className='mh2 mv3'>
-                <label className='mv2  mh2 b' htmlFor='title'>
+              <div className='mh2 mv1'>
+                <label className='mv1  mh2 b' htmlFor='title'>
                   Location Name
                 </label>
                 <input
@@ -174,8 +174,8 @@ export default function AddPoi ({ auth, token }) {
                   placeholder='Name of Location'
                 />
               </div>
-              <div className='mh2 mv3'>
-                <label className='mv2 b mh2' htmlFor='street address'>
+              <div className='mh2 mv1'>
+                <label className='mv1 b mh2' htmlFor='street address'>
                   Street Address
                 </label>
                 <input
@@ -188,8 +188,8 @@ export default function AddPoi ({ auth, token }) {
                   placeholder='Street Address'
                 />
               </div>
-              <div className='mh2 mv3'>
-                <label className='mv2 b mh2' htmlFor='city'>
+              <div className='mh2 mv1'>
+                <label className='mv1 b mh2' htmlFor='city'>
                   City
                 </label>
                 <input
@@ -202,8 +202,8 @@ export default function AddPoi ({ auth, token }) {
                   placeholder='City'
                 />
               </div>
-              <div className='mh2 mv3'>
-                <label className='mv2 b mh2' htmlFor='state'>
+              <div className='mh2 mv1'>
+                <label className='mv1 b mh2' htmlFor='state'>
                   State
                 </label>
                 <input
@@ -216,8 +216,8 @@ export default function AddPoi ({ auth, token }) {
                   placeholder='State'
                 />
               </div>
-              <div className='mh2 mv3'>
-                <label className='mv2 b mh2' htmlFor='zipCode'>
+              <div className='mh2 mv1'>
+                <label className='mv1 b mh2' htmlFor='zipCode'>
                   Zip Code
                 </label>
                 <input
@@ -230,8 +230,8 @@ export default function AddPoi ({ auth, token }) {
                   placeholder='zipCode'
                 />
               </div>
-              <div className='mh2 mv3'>
-                <label className='mv2 b mh2' htmlFor='status'>
+              <div className='mh2 mv1'>
+                <label className='mv1 b mh2' htmlFor='status'>
                   Notes
                 </label>
                 <input
@@ -244,8 +244,8 @@ export default function AddPoi ({ auth, token }) {
                   placeholder='Add your notes here...'
                 />
               </div>
-              <div className='mh2 mv3'>
-                <label className='mv2 b mh2' htmlFor='status'>
+              <div className='mh2 mv1'>
+                <label className='mv1 b mh2' htmlFor='status'>
                   Image
                 </label>
                 <input
@@ -254,10 +254,10 @@ export default function AddPoi ({ auth, token }) {
                   id='images'
                   placeholder='Choose your image to add'
                 />
-                <button type='reset'>Clear image</button>
+                <p><button type='reset'>Clear image</button></p>
               </div>
-              <div className='mh2 mv3'>
-                <label className='mv2 b mh2' htmlFor='status'>
+              <div className='mh2 mv1'>
+                <label className='mv1 b mh2' htmlFor='status'>
                   Category
                 </label>
                 <select

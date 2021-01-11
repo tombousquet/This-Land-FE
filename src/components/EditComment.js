@@ -5,13 +5,21 @@ import clsx from 'clsx'
 
 export default function EditComment ({ auth, token }) {
   const { id } = useParams()
-  const [comment, setComment] = useState('')
+  const [comment, setComment] = useState({})
   const [feedbackMsg, setFeedbackMsg] = useState('')
 
+  const setCommentField = (field, value) => {
+    setComment({
+      ...comment,
+      [field]: value
+    })
+  }
+  console.log(comment)
   useEffect(() => {
     axios.get('https://this-land-team-5.herokuapp.com/api/tellyourstory/' + id)
       .then(response => {
         setComment(response.data)
+        console.log(response.data)
       })
   }, [id])
 
@@ -19,16 +27,16 @@ export default function EditComment ({ auth, token }) {
     event.preventDefault()
 
     const data = new FormData()
-    data.set('comment', comment)
+    data.set('text', comment.text)
 
-    const image = document.getElementById('image').files[0]
+    const image = document.getElementById('image')
     if (image) {
-      data.set('images', image)
+      data.set('images', image.files[0])
     }
 
     axios
       .put(
-        'https://this-land-team-5.herokuapp.com/api/tellyourstory/' + id,
+        'https://this-land-team-5.herokuapp.com/api/tellyourstory/' + id + '/',
         data,
         {
           headers: {
@@ -51,7 +59,7 @@ export default function EditComment ({ auth, token }) {
   }
 
   if (feedbackMsg.type === 'success') {
-    return <Redirect to={'/detail/' + id} />
+    return <Redirect to={'/detail/' + comment.poi} />
   }
 
   if (!auth) {
@@ -88,8 +96,8 @@ export default function EditComment ({ auth, token }) {
                 required
                 type='text'
                 id='comment'
-                value={comment}
-                onChange={event => setComment(event.target.value)}
+                value={comment.text}
+                onChange={event => setCommentField('text', event.target.value)}
                 name='poiNote'
                 component='input'
                 placeholder='Add comment here'
