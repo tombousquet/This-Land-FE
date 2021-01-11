@@ -51,6 +51,12 @@ function App (props) {
           <Route exact path='/'>
             <MapView />
           </Route>
+          <Route path='/edit/comment/:id/'>
+            <EditComment
+              auth={auth}
+              token={token}
+            />
+          </Route>
           <Route path='/edit/:id'>
             <EditPoi
               auth={auth}
@@ -63,14 +69,8 @@ function App (props) {
               auth={auth}
             />
           </Route>
-          <Route path='add/comment/:id/'>
+          <Route path='/add/comment/:id/'>
             <AddComment
-              auth={auth}
-              token={token}
-            />
-          </Route>
-          <Route path='edit/comment/:id/'>
-            <EditComment
               auth={auth}
               token={token}
             />
