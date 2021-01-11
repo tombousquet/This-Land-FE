@@ -167,7 +167,7 @@ export default function EditPoi ({ auth, token }) {
         <div className='form'>
           <form
             onSubmit={handleEdit}
-            className='container1'
+            className='container1 center'
           >
             <div>
               <div className='mh2 mv3'>

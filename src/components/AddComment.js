@@ -69,7 +69,7 @@ export default function AddComment ({ auth, token }) {
         )
       }
       <div className='form'>
-        <form className='container2' onSubmit={handleSubmit}>
+        <form className='container2 center' onSubmit={handleSubmit}>
           <div>
             <div className='mh2 mv3'>
               <label className='mv2  mh2 b' htmlFor='title'>Comments</label>
