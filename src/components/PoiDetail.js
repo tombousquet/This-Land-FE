@@ -91,11 +91,11 @@ export default function PoiDetail ({ token, auth }) {
           </div>
         </div>
       </div>
-      <div>
-        {/* {auth === poi.user && */}
-        <button onClick={deletePoi}>Delete this location</button>
-        <button onClick={editPoiFunction}>Edit this location</button>
-      </div>
+      {auth === poi.user &&
+        <div>
+          <button onClick={deletePoi}>Delete this location</button>
+          <button onClick={editPoiFunction}>Edit this location</button>
+        </div>}
       <div>
         {token && (
           <div className='mh1'>
@@ -110,14 +110,15 @@ export default function PoiDetail ({ token, auth }) {
                   {comment.images && <img src={comment.images} alt='location' width='284' height='213' />}
                   <p> {comment.user} </p>
                   <p> {comment.text} </p>
-                  {/* {auth === comment.user && */}
-                  <button onClick={() => deleteComment(comment)}>Delete this memory</button>
-                  <p><button onClick={() => editCommentFunction(comment)}>Edit this memory</button></p>
+                  {auth === comment.user &&
+                    <div>
+                      <button className='mh1 mv1' onClick={() => deleteComment(comment)}>Delete this memory</button>
+                      <button onClick={() => editCommentFunction(comment)}>Edit this memory</button>
+                    </div>}
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </div>
