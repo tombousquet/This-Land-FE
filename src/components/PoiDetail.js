@@ -52,7 +52,7 @@ export default function PoiDetail ({ token, auth }) {
     setEditComment(true)
   }
   if (editComment) {
-    return <Redirect to={'/comment/' + id + '/edit'} />
+    return <Redirect to={'/edit/comment/' + id} />
   }
 
   function deleteComment (commentToDelete) {
@@ -75,7 +75,7 @@ export default function PoiDetail ({ token, auth }) {
   }
 
   if (addComment) {
-    return <Redirect to={'/comment/' + id + '/add'} />
+    return <Redirect to={'/add/comment/' + id} />
   }
 
   return (
@@ -111,7 +111,7 @@ export default function PoiDetail ({ token, auth }) {
                   <p> {comment.text} </p>
                   {/* {auth === comment.user && */}
                   <button onClick={() => deleteComment(comment)}>Delete this memory</button>
-                  <p><button onClick={editCommentFunction}>Edit this location</button></p>
+                  <p><button onClick={editCommentFunction}>Edit this memory</button></p>
                 </div>
               </div>
             ))}
