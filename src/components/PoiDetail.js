@@ -84,10 +84,10 @@ export default function PoiDetail ({ token, auth }) {
       <div className='body1'>
         <div className='polaroid center '> {poi.images && <img src={poi.images} alt='location' width='70%' />}
           <div className='caption'>
-            <div className='name'> {poi.location_name} </div>
+            <div className='name mv2'> {poi.location_name} </div>
             <div className='address'> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </div>
             <p className='notes'> {poi.notes} </p>
-            <div> {poi.user} </div>
+            <div className='poi_user'> @{poi.user} </div>
           </div>
         </div>
       </div>
@@ -108,8 +108,8 @@ export default function PoiDetail ({ token, auth }) {
               <div key={index}>
                 <div className='polaroid1 rotate_left'>
                   {comment.images && <img src={comment.images} alt='location' width='284' height='213' />}
-                  <p> {comment.user} </p>
                   <p> {comment.text} </p>
+                  <p className='comment_user'> @{comment.user} </p>
                   {auth === comment.user &&
                     <div>
                       <button className='mh1 mv1' onClick={() => deleteComment(comment)}>Delete this memory</button>
