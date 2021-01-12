@@ -15,7 +15,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
 }
 
 .side-drawer li {
@@ -32,7 +32,7 @@
 
 .side-drawer a:hover,
 .side-drawer a:active {
-  color: antiquewhite;
+  color: rgb(0, 0, 12);
 }
 
 @media (max-width: 769 px) {
