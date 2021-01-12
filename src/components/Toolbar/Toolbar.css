@@ -16,12 +16,16 @@
 .toolbar_logo {
   margin-left: 1rem;
 }
+.toolbar_logo a:hover,
+.toolbar_logo a:active {
+  color: rgb(0, 0, 12);
+}
 
 .toolbar_logo a {
   color: white;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  text-shadow: 3px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
   text-decoration: none;
-  font-size: 40px;
+  font-size: 50px;
   font-family: Georgia;
 }
 .spacer {
@@ -47,7 +51,7 @@
 
 .toolbar_navigation-items a:hover,
 .toolbar_navigation-items a:active {
-  color: antiquewhite;
+  color: rgb(0, 0, 12);
 }
 
 @media (max-width: 768px) {
