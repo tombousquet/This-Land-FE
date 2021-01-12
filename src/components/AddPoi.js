@@ -123,7 +123,6 @@ export default function AddPoi ({ auth, token }) {
         })
         setNewPoiId(response.data.id)
         setPoiAdded(true)
-        console.log(response)
       })
       .catch((error) => {
         setFeedbackMsg({ type: 'error', message: 'Information was invalid' })
@@ -131,7 +130,6 @@ export default function AddPoi ({ auth, token }) {
       })
   }
 
-  console.log({ newPoiId })
   if (poiAdded) {
     return (
       <div>

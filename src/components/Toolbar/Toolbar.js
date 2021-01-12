@@ -8,8 +8,6 @@ export default function Toolbar ({ auth, token, setAuth, setToken, handleDrawerC
   const [feedbackMsg, setFeedbackMsg] = useState('')
 
   console.log({ feedbackMsg })
-  console.log({ auth })
-  console.log({ token })
 
   function logout () {
     axios.post('https://this-land-team-5.herokuapp.com/auth/token/logout',

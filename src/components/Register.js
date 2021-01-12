@@ -31,7 +31,6 @@ export default function Register ({ auth, onRegister, onToken }) {
             setFeedbackMsg({ type: 'success', message: 'Logged in.' })
             onToken(response.data.auth_token)
             setRegistered(true)
-            console.log(response.data.auth_token)
           })
           .catch(error => {
             setFeedbackMsg({ type: 'error', message: 'The username or password is invalid' })
@@ -51,9 +50,6 @@ export default function Register ({ auth, onRegister, onToken }) {
   return (
     <div className='bg-img2'>
       <div className='Register'>
-        {/* <h1 className='f2 b'>Welcome to Your History</h1>
-        <h1 className='f2.5 b'>Register or <Link to='/login'>Log In</Link></h1> */}
-
         <form
           onSubmit={handleSubmit}
           className='container mh5 mt5'
