@@ -111,7 +111,7 @@ export default function PoiDetail ({ token, auth }) {
       <div>
         {token && (
           <div className='mh1'>
-            <button className='submit' onClick={newComment}>Click here to add your own memory or story to this place!</button>
+            <button className='comment-submit' onClick={newComment}>Click here to add your own memory or story to this place!</button>
           </div>
         )}
         <div className='body2'>

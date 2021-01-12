@@ -70,6 +70,21 @@ li {
   padding-left: 3px;
 }
 
+.comment-submit {
+  margin: 0px auto;
+  display: block;
+  position: relative;
+  border-radius: 25px;
+  background-color: #708090;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+  font-family: Georgia;
+}
+
 .comment_user {
   color: black;
   text-align: start;

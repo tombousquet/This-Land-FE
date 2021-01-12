@@ -181,16 +181,16 @@ export default function EditPoi ({ auth, token }) {
                 />
               </div>
               <div className='mh2 mv3'>
-                <label className='mv2 b mh2' htmlFor='status'>
+                <label className='mv1 b mh2' htmlFor='status'>
                   Image
                 </label>
                 <input
-                  className='mh3'
+                  className='mv1'
                   type='file'
                   id='images'
                   placeholder='Choose your image to add'
                 />
-                <button type='reset'>Clear image</button>
+                <button className='mv1' type='reset'>Clear Image</button>
               </div>
               <div className='mh2 mv3'>
                 <label className='mv2 b mh2' htmlFor='status'>
