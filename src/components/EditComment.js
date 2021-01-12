@@ -29,9 +29,9 @@ export default function EditComment ({ auth, token }) {
     const data = new FormData()
     data.set('text', comment.text)
 
-    const image = document.getElementById('image')
+    const image = document.getElementById('images').files[0]
     if (image) {
-      data.set('images', image.files[0])
+      data.set('images', image)
     }
 
     axios
@@ -112,7 +112,9 @@ export default function EditComment ({ auth, token }) {
                 id='images'
                 placeholder='Choose your image to add'
               />
-              <button type='reset'>Clear image</button>
+              <div>
+                <button className='mv2 mh2' type='reset'>Clear image</button>
+              </div>
             </div>
             <button className='submit' type='submit'>Submit</button>
           </div>

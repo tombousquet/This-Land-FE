@@ -257,12 +257,12 @@ export default function AddPoi ({ auth, token }) {
                   Image
                 </label>
                 <input
-                  className='mh3'
+                  className='mv1'
                   type='file'
                   id='images'
                   placeholder='Choose your image to add'
                 />
-                <p><button type='reset'>Clear image</button></p>
+                <button className='mv1' type='reset'>Clear Image</button>
               </div>
               <div className='mh2 mv1'>
                 <label className='mv1 b mh2' htmlFor='status'>
