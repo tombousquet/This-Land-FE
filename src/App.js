@@ -8,12 +8,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useLocalStorage } from './Hooks'
 import './App.css'
 import 'tachyons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTrashAlt, faEdit } from '@fortawesome/free-regular-svg-icons'
 import Toolbar from './components/Toolbar/Toolbar'
 import SideDrawer from './components/SideDrawer/SideDrawer'
 import Backdrop from './components/Backdrop/Backdrop'
 import React, { useState } from 'react'
 import Register from './components/Register'
 import Login from './components/Login'
+
+library.add(faTrashAlt, faEdit)
 
 function App (props) {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
