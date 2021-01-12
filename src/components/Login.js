@@ -34,14 +34,14 @@ export default function Login ({ auth, onLogin, onToken }) {
   return (
     <div className='bg-img'>
       <div className='Title'>
-        <h1 className='f2 b shadow'>Welcome to Your History</h1>
+        {/* <h1 className='f2 b shadow'>Welcome to Your History</h1> */}
         <div className='Login'>
-          <h1 className='f2.5 b shadow'>Log In or <Link to='/signup'>Register</Link></h1>
+          {/* <h1 className='f2.5 b shadow'>Log In or <Link to='/signup'>Register</Link></h1> */}
 
           <div>
             <form
               onSubmit={handleSubmit}
-              className='container'
+              className='container mh5 mt5'
             >
               {
           feedbackMsg &&
@@ -51,7 +51,7 @@ export default function Login ({ auth, onLogin, onToken }) {
               {
                 'light-gray': (feedbackMsg.type === 'error'),
                 'bg-red': (feedbackMsg.type === 'error'),
-                gray: (feedbackMsg.type === 'success'),
+                white: (feedbackMsg.type === 'success'),
                 'bg-navy': (feedbackMsg.type === 'success')
               }
             )}
@@ -60,7 +60,7 @@ export default function Login ({ auth, onLogin, onToken }) {
             </div>
           )
       }
-              <label className='db b mv2 black mid-v' htmlFor='username'>Username</label>
+              <label className='db b mv2 black mid-v f3' htmlFor='username'>Username</label>
               <input
                 required
                 type='text'
@@ -70,7 +70,7 @@ export default function Login ({ auth, onLogin, onToken }) {
                 onChange={event => setUsername(event.target.value)}
               />
               <div className='mv2'>
-                <label className='db b mv2 black' htmlFor='password'>Password</label>
+                <label className='db b mv2 black f3' htmlFor='password'>Password</label>
                 <input
                   required
                   type='password'
@@ -84,6 +84,7 @@ export default function Login ({ auth, onLogin, onToken }) {
                 <button className='submit' type='submit'>
                   Submit
                 </button>
+                <h4>Log in or create an account <Link to='/signup'>here</Link></h4>
               </div>
             </form>
           </div>

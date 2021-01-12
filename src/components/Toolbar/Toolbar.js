@@ -37,7 +37,7 @@ export default function Toolbar ({ auth, token, setAuth, setToken, handleDrawerC
         <div className='toolbar_toggle-button'>
           <DrawerToggleButton onClick={handleDrawerClick} />
         </div>
-        <div className='toolbar_logo'><a href='/'>THIS LAND</a></div>
+        <div className='toolbar_logo'><a className='ml2' href='/'>THIS LAND</a></div>
         <div className='spacer' />
         <div className='toolbar_navigation-items'>
           <ul>

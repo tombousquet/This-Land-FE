@@ -61,7 +61,7 @@ export default function AddComment ({ auth, token }) {
             {
               'light-gray': (feedbackMsg.type === 'error'),
               'bg-red': (feedbackMsg.type === 'error'),
-              gray: (feedbackMsg.type === 'success'),
+              white: (feedbackMsg.type === 'success'),
               'bg-navy': (feedbackMsg.type === 'success')
             }
           )}

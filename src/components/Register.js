@@ -51,12 +51,12 @@ export default function Register ({ auth, onRegister, onToken }) {
   return (
     <div className='bg-img2'>
       <div className='Register'>
-        <h1 className='f2 b'>Welcome to Your History</h1>
-        <h1 className='f2.5 b'>Register or <Link to='/login'>Log In</Link></h1>
+        {/* <h1 className='f2 b'>Welcome to Your History</h1>
+        <h1 className='f2.5 b'>Register or <Link to='/login'>Log In</Link></h1> */}
 
         <form
           onSubmit={handleSubmit}
-          className='container'
+          className='container mh5 mt5'
         >{
           feedbackMsg &&
           (
@@ -65,7 +65,7 @@ export default function Register ({ auth, onRegister, onToken }) {
               {
                 'light-gray': (feedbackMsg.type === 'error'),
                 'bg-red': (feedbackMsg.type === 'error'),
-                gray: (feedbackMsg.type === 'success'),
+                white: (feedbackMsg.type === 'success'),
                 'bg-navy': (feedbackMsg.type === 'success')
               }
             )}
@@ -74,8 +74,9 @@ export default function Register ({ auth, onRegister, onToken }) {
             </div>
           )
       }
-          <label className='db b mv2 black' htmlFor='username'>Email</label>
+          <label className='db b mt1 black f3' htmlFor='username'>Email</label>
           <input
+            className=''
             required
             type='text'
             placeholder='Enter Email'
@@ -83,7 +84,7 @@ export default function Register ({ auth, onRegister, onToken }) {
             value={email}
             onChange={event => setEmail(event.target.value)}
           />
-          <label className='db b mv2 black' htmlFor='username'>Username</label>
+          <label className='db b black f3' htmlFor='username'>Username</label>
           <input
             required
             type='text'
@@ -93,7 +94,7 @@ export default function Register ({ auth, onRegister, onToken }) {
             onChange={event => setUsername(event.target.value)}
           />
           <div className='mv2'>
-            <label className='db b mv2 black' htmlFor='password'>Password</label>
+            <label className='db b black f3' htmlFor='password'>Password</label>
             <input
               required
               type='password'
@@ -107,6 +108,7 @@ export default function Register ({ auth, onRegister, onToken }) {
             <button className='submit' type='submit'>
               Submit
             </button>
+            <h4>Log in <Link to='/login'>here</Link></h4>
           </div>
         </form>
       </div>
