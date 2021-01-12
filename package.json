@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@mapbox/mapbox-gl-geocoder": "^4.7.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -11,6 +14,7 @@
     "axios": "^0.21.0",
     "clsx": "^1.1.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "font-awesome": "^4.7.0",
     "mapbox-gl": "^1.13.0",
     "mapbox-gl-geocoder": "^2.0.1",
     "react": "^17.0.1",

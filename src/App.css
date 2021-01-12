@@ -55,6 +55,10 @@ li {
   margin-bottom: 0px;
 }
 
+.icon {
+  text-align: end;
+}
+
 h1 {
   text-align: center;
   font-family: Georgia;
