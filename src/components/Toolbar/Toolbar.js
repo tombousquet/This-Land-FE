@@ -47,7 +47,7 @@ export default function Toolbar ({ auth, token, setAuth, setToken, handleDrawerC
             <div>
               {auth
                 ? <li>{auth} | <Link to='/login' onClick={() => logout()}>Log out</Link> </li>
-                : <li><a href='/login'>Log in to add</a></li>}
+                : <li><a href='/login'>Log in</a></li>}
             </div>
           </ul>
         </div>

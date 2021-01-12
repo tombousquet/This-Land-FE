@@ -43,7 +43,7 @@ export default function SideDrawer ({ auth, token, setAuth, setToken }) {
         <div>
           {auth
             ? <li>{auth} | <Link to='/login' onClick={() => logout()}>Log out</Link> </li>
-            : <li><a href='/login'>Log in to add</a></li>}
+            : <li><a href='/login'>Log in</a></li>}
         </div>
       </ul>
     </nav>
