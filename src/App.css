@@ -41,6 +41,20 @@ li {
   font-family: Georgia;
 }
 
+.poi_user {
+  color: black;
+  text-align: start;
+  font-size: smaller;
+  margin-bottom: 0px;
+}
+
+.comment_user {
+  color: black;
+  text-align: start;
+  font-size: smaller;
+  margin-bottom: 0px;
+}
+
 h1 {
   text-align: center;
   font-family: Georgia;
@@ -190,7 +204,7 @@ div.body1 {
 
 div.polaroid1 {
   width: 320px;
-  padding: 10px 10px 20px 10px;
+  padding: 10px 10px 15px 15px;
   border: 1px solid BFBFBF;
   background-color: white;
   box-shadow: 10px 10px 5px #aaaaaa;
