@@ -20,6 +20,8 @@ export default function AddPoi ({ auth, token }) {
   const [notes, setNotes] = useState('')
   const [category, setCategory] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
+  const [newPoiId, setNewPoiId] = useState('')
+  const [poiAdded, setPoiAdded] = useState(false)
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -119,6 +121,8 @@ export default function AddPoi ({ auth, token }) {
           type: 'success',
           message: 'Point of Interest was successfully added!'
         })
+        setNewPoiId(response.data.id)
+        setPoiAdded(true)
         console.log(response)
       })
       .catch((error) => {
@@ -127,10 +131,11 @@ export default function AddPoi ({ auth, token }) {
       })
   }
 
-  if (feedbackMsg.type === 'success') {
+  console.log({ newPoiId })
+  if (poiAdded) {
     return (
       <div>
-        <Redirect exact to='/' />
+        <Redirect exact to={'/detail/' + newPoiId} />
       </div>
     )
   }
