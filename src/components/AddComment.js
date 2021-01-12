@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
@@ -8,8 +7,6 @@ export default function AddComment ({ auth, token }) {
   const { id } = useParams()
   const [comment, setComment] = useState('')
   const [feedbackMsg, setFeedbackMsg] = useState('')
-
-  console.log(auth)
 
   function handleSubmit (e) {
     e.preventDefault()
@@ -61,7 +58,7 @@ export default function AddComment ({ auth, token }) {
             {
               'light-gray': (feedbackMsg.type === 'error'),
               'bg-red': (feedbackMsg.type === 'error'),
-              gray: (feedbackMsg.type === 'success'),
+              white: (feedbackMsg.type === 'success'),
               'bg-navy': (feedbackMsg.type === 'success')
             }
           )}

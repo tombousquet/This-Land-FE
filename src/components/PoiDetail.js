@@ -20,9 +20,7 @@ export default function PoiDetail ({ token, auth }) {
     axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
       .then(response => {
         setPoi(response.data)
-        console.log(response.data)
         setCommentList(response.data.TellYourStories)
-        console.log(response.data.TellYourStories)
       })
   }, [id])
 

@@ -7,14 +7,10 @@ export default function SideDrawer ({ auth, token, setAuth, setToken }) {
   const [feedbackMsg, setFeedbackMsg] = useState('')
 
   console.log({ feedbackMsg })
-  console.log({ auth })
-  console.log({ token })
 
   function logout () {
     axios.post('https://this-land-team-5.herokuapp.com/auth/token/logout',
-      {
-
-      },
+      {},
       {
         headers: {
           'Content-Type': 'application/json',

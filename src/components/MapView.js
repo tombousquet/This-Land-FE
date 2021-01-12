@@ -125,7 +125,6 @@ export default function MapView () {
   const addMarker = (location, poi) => {
     if (location.center && mapRef.current) {
       const locationName = poi.location_name
-      console.log({ poi })
       const newPopup = new mapboxgl.Popup(
         {
           offset: 25

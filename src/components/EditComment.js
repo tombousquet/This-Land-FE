@@ -14,7 +14,7 @@ export default function EditComment ({ auth, token }) {
       [field]: value
     })
   }
-  console.log(comment)
+
   useEffect(() => {
     axios.get('https://this-land-team-5.herokuapp.com/api/tellyourstory/' + id)
       .then(response => {
