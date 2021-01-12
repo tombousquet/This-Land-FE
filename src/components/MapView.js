@@ -54,7 +54,7 @@ export default function MapView () {
           offset: 25
         }
       )
-        .setLngLat([-120, 44])
+        .setLngLat([-110, 44])
         .addTo(mapRef.current)
         .setHTML(
         `<div>
@@ -73,7 +73,7 @@ export default function MapView () {
           offset: 25
         }
       )
-        .setLngLat([-95, 27])
+        .setLngLat([-100, 27])
         .addTo(mapRef.current)
         .setHTML(
             `<div>
@@ -92,7 +92,7 @@ export default function MapView () {
           offset: 25
         }
       )
-        .setLngLat([-71, 46])
+        .setLngLat([-85, 38])
         .addTo(mapRef.current)
         .setHTML(
                 `<div>
