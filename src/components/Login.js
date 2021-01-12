@@ -51,7 +51,8 @@ export default function Login ({ auth, onLogin, onToken }) {
               {
                 'light-gray': (feedbackMsg.type === 'error'),
                 'bg-red': (feedbackMsg.type === 'error'),
-                'bg-washed-red': (feedbackMsg.type === 'success')
+                gray: (feedbackMsg.type === 'success'),
+                'bg-navy': (feedbackMsg.type === 'success')
               }
             )}
             >

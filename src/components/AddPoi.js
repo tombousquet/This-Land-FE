@@ -144,12 +144,15 @@ export default function AddPoi ({ auth, token }) {
     <div className='ma3'>
       <div>
         {feedbackMsg && (
-          <div
-            className={clsx({
-              'bg-red': feedbackMsg.type === 'error',
-              white: feedbackMsg.type === 'error',
-              'bg-green': feedbackMsg.type === 'success'
-            })}
+          <div className={clsx(
+            'ba bw2', 'pa3', 'w-100',
+            {
+              'light-gray': (feedbackMsg.type === 'error'),
+              'bg-red': (feedbackMsg.type === 'error'),
+              gray: (feedbackMsg.type === 'success'),
+              'bg-navy': (feedbackMsg.type === 'success')
+            }
+          )}
           >
             {feedbackMsg.message}
           </div>

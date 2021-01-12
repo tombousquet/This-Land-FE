@@ -57,10 +57,12 @@ export default function AddComment ({ auth, token }) {
         feedbackMsg &&
         (
           <div className={clsx(
+            'ba bw2', 'pa3', 'w-100',
             {
+              'light-gray': (feedbackMsg.type === 'error'),
               'bg-red': (feedbackMsg.type === 'error'),
-              white: (feedbackMsg.type === 'error'),
-              'bg-green': (feedbackMsg.type === 'success')
+              gray: (feedbackMsg.type === 'success'),
+              'bg-navy': (feedbackMsg.type === 'success')
             }
           )}
           >
