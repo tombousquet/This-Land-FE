@@ -24,7 +24,7 @@ a {
 h5 {
   margin: 0px;
   padding: 5px;
-  font-family: sans-serif;
+  font-family: Georgia;
 }
 
 .title {
@@ -42,14 +42,14 @@ li {
 }
 
 .poi_user {
-  color: blue;
+  color: black;
   text-align: start;
   font-size: smaller;
   margin-bottom: 0px;
 }
 
 .comment_user {
-  color: blue;
+  color: black;
   text-align: start;
   font-size: smaller;
   margin-bottom: 0px;
