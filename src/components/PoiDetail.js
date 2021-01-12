@@ -90,16 +90,20 @@ export default function PoiDetail ({ token, auth }) {
             <div className='address'> {poi.street_address} {poi.city} {poi.state} {poi.zip_code} </div>
             <p className='notes'> {poi.notes} </p>
             <div>
-              <div className='poi_user'> @{poi.user} </div>
-              {auth === poi.user &&
-                <div className='icon'>
-                  <button onClick={deletePoi}>
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                  </button>
-                  <button onClick={editPoiFunction}>
-                    <FontAwesomeIcon icon={faEdit} />
-                  </button>
-                </div>}
+              <div>
+                <div className='user_button'>
+                  <p className='poi_user'> @{poi.user}</p>
+                  {auth === poi.user &&
+                    <div className='icon'>
+                      <button className='edit-icon' onClick={editPoiFunction}>
+                        <FontAwesomeIcon icon={faEdit} />
+                      </button>
+                      <button className='delete-icon' onClick={deletePoi}>
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                      </button>
+                    </div>}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -121,11 +125,11 @@ export default function PoiDetail ({ token, auth }) {
                     <p className='comment_user'> @{comment.user} </p>
                     {auth === comment.user &&
                       <div className='icon'>
-                        <button className='mh1 mv1' onClick={() => deleteComment(comment)}>
-                          <FontAwesomeIcon icon={faTrashAlt} />
-                        </button>
-                        <button onClick={() => editCommentFunction(comment)}>
+                        <button className='mh1 mv1 edit-icon' onClick={() => editCommentFunction(comment)}>
                           <FontAwesomeIcon icon={faEdit} />
+                        </button>
+                        <button className='delete-icon' onClick={() => deleteComment(comment)}>
+                          <FontAwesomeIcon icon={faTrashAlt} />
                         </button>
                       </div>}
                   </div>

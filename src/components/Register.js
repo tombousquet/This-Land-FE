@@ -51,8 +51,8 @@ export default function Register ({ auth, onRegister, onToken }) {
   return (
     <div className='bg-img2'>
       <div className='Register'>
-        <h1 className=' f2 b black'>Welcome to Your History</h1>
-        <h1 className='f3 b black'>Register or <Link to='/login'>Log In</Link></h1>
+        <h1 className='f2 b'>Welcome to Your History</h1>
+        <h1 className='f2.5 b'>Register or <Link to='/login'>Log In</Link></h1>
 
         <form
           onSubmit={handleSubmit}

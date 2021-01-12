@@ -29,9 +29,9 @@ export default function EditComment ({ auth, token }) {
     const data = new FormData()
     data.set('text', comment.text)
 
-    const image = document.getElementById('image')
+    const image = document.getElementById('images').files[0]
     if (image) {
-      data.set('images', image.files[0])
+      data.set('images', image)
     }
 
     axios

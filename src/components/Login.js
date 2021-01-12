@@ -34,9 +34,9 @@ export default function Login ({ auth, onLogin, onToken }) {
   return (
     <div className='bg-img'>
       <div className='Title'>
-        <h1 className=' f2 b black'>Welcome to Your History</h1>
+        <h1 className='f2 b shadow'>Welcome to Your History</h1>
         <div className='Login'>
-          <h1 className='f3 b black'>Log In or <Link to='/signup'>Register</Link></h1>
+          <h1 className='f2.5 b shadow'>Log In or <Link to='/signup'>Register</Link></h1>
 
           <div>
             <form

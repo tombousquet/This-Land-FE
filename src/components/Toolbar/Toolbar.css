@@ -18,7 +18,7 @@
 }
 .toolbar_logo a:hover,
 .toolbar_logo a:active {
-  color: rgb(0, 0, 12);
+  color: rgb(176, 56, 56);
 }
 
 .toolbar_logo a {
@@ -51,7 +51,7 @@
 
 .toolbar_navigation-items a:hover,
 .toolbar_navigation-items a:active {
-  color: rgb(0, 0, 12);
+  color: rgb(176, 56, 56);
 }
 
 @media (max-width: 768px) {

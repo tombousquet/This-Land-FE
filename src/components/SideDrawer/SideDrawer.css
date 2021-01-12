@@ -32,7 +32,7 @@
 
 .side-drawer a:hover,
 .side-drawer a:active {
-  color: rgb(0, 0, 12);
+  color: rgb(176, 56, 56);
 }
 
 @media (max-width: 769 px) {
