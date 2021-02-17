@@ -17,6 +17,7 @@ export default function PoiDetail ({ token, auth }) {
   console.log(commentList)
 
   useEffect(() => {
+    //call to get specific poi detail info
     axios.get('https://this-land-team-5.herokuapp.com/api/pointsofinterest/' + id)
       .then(response => {
         setPoi(response.data)
@@ -41,6 +42,7 @@ export default function PoiDetail ({ token, auth }) {
     return <Redirect to='/' />
   }
 
+  //runs on click, sets editPoi to true which redirects to specific poi form
   function editPoiFunction () {
     setEditPoi(true)
   }
@@ -48,6 +50,8 @@ export default function PoiDetail ({ token, auth }) {
   if (editPoi) {
     return <Redirect to={'/edit/' + id} />
   }
+
+  //runs on click, sets editComment to true which redirects to specific comment form
   function editCommentFunction (commentToEdit) {
     setEditComment(true)
     setCommentId(commentToEdit.id)
@@ -66,6 +70,7 @@ export default function PoiDetail ({ token, auth }) {
       })
       .then(response => {
         setCommentList(commentList.filter(currentComment => (
+          //the updated comment list is all comments with id's that do not match the id of the comment just deleted
           currentComment.id !== commentToDelete.id)
         ))
       })
