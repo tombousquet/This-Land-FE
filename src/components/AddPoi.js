@@ -58,7 +58,7 @@ export default function AddPoi ({ auth, token }) {
     map.addControl(marker)
 
     // This runs when a result is selected in the map search.
-    //isolate mapbox geocode json data to populate form
+    // isolate mapbox geocode json data to populate form
     marker.on('result', function (event) {
       const result = event.result
       console.log({ result })
@@ -78,7 +78,7 @@ export default function AddPoi ({ auth, token }) {
       }
       const city = result.context[2].text
       setCity(city)
-      const state = result.context[3].short_code.split('-')[1]
+      const state = result.context[4].short_code.split('-')[1]
       setState(state)
       const zip = result.context[1].text
       setZipCode(zip)
