@@ -80,7 +80,7 @@ export default function AddPoi ({ auth, token }) {
       }
       const city = result.context[2].text
       setCity(city)
-      const state = result.context[3].short_code.split('-')[1]
+      const state = result.context[4].short_code.split('-')[1]
       setState(state)
       const zip = result.context[1].text
       setZipCode(zip)
