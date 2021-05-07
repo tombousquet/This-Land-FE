@@ -58,7 +58,9 @@ export default function AddPoi ({ auth, token }) {
     map.addControl(marker)
 
     // This runs when a result is selected in the map search.
-    // isolate mapbox geocode json data to populate form
+
+    // Isolate mapbox geocode json data to populate form
+
     marker.on('result', function (event) {
       const result = event.result
       console.log({ result })
