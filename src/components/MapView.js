@@ -105,6 +105,7 @@ export default function MapView () {
       })
     }
 
+    //prevents memory leak
     return () => map.remove()
     // eslint-disable-next-line
   }, [])
