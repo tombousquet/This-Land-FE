@@ -27,7 +27,7 @@ export default function AddPoi ({ auth, token }) {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/tombousquet/ckjep6fok7uyw1ao069ohe6wg',
-      // centered on durham
+      // centered on lower 48
       center: [-96, 35],
       zoom: 2
     })
@@ -57,6 +57,7 @@ export default function AddPoi ({ auth, token }) {
     map.addControl(marker)
 
     // This runs when a result is selected in the map search.
+    // Isolate mapbox geocode json data to populate form
     marker.on('result', function (event) {
       const result = event.result
       console.log({ result })

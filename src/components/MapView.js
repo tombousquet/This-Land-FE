@@ -61,6 +61,7 @@ export default function MapView () {
         <h5>Use the geolocater button in the top-right corner to find your location</h5>
         </div>`)
 
+      //function sets ShowPopUp state to false so pop up only appears until it is closed
       popup1.on('close', function () {
         setShowPopUp1(false)
       })
@@ -109,12 +110,14 @@ export default function MapView () {
   }, [])
 
   useEffect(() => {
+    //isolating address info based on database poi data
     for (const poi of pois) {
       const streetAddress = poi.street_address
       const city = poi.city
       const state = poi.state
       const zip = poi.zip_code
 
+      //creates search query for mapbox forward geocode - address into coordinates
       axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + streetAddress + '%20' + city + '%20' + state + '%20' + zip + '.json?access_token=pk.eyJ1IjoidG9tYm91c3F1ZXQiLCJhIjoiY2tpbnE3eG5iMHFwZjJ4cGYzcTF4ZmI0aiJ9.o8dmBmerSg0lTilbWTqfSw')
         .then(response => {
           addMarker(response.data.features[0], poi)
@@ -123,6 +126,7 @@ export default function MapView () {
   }, [pois])
 
   const addMarker = (location, poi) => {
+    //if the data is available and the map is loaded, create a marker for each location
     if (location.center && mapRef.current) {
       const locationName = poi.location_name
       const newPopup = new mapboxgl.Popup(
